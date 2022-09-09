@@ -1,0 +1,8 @@
+{
+  "coder/code-server": "v4.6.1",
+  "home-assistant/cli": "4.21.0",
+  "bcicen/ctop": "v0.7.7",
+  "rclone/rclone": "v1.59.1",
+  "tailscale/tailscale": "v1.30.1",
+  "cloudflare/cloudflared": "2022.9.0"
+}

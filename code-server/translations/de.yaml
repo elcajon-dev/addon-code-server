@@ -1,0 +1,11 @@
+---
+configuration:
+  log_level:
+    name: Log Level
+    description: >-
+      Bestimmt das Log Level für das Add-on und den Code Server service.
+  init_path:
+    name: Init Script Pfad
+    description: >-
+      Pfad für die custom-config und custom-service Skripte.
+      Funktion ist deaktiviert falls Wert leer ist.

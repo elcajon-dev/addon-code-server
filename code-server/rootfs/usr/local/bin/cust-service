@@ -1,0 +1,37 @@
+#!/usr/bin/with-contenv bashio
+
+function cust-service () {
+
+if [ ${1} == "--help" ] ; then
+echo "
+Usage cust-service [SERVICE NAME] [OPTION]
+Use this command to control code-server custom services.
+
+[SERVICE NAME]
+Use service name as defined in subdirectory <data_path>/custom-services.d/[SERVICE NAME]
+
+[OPTION]
+up.  - starts service
+down - takes service off
+"
+exit 0;
+fi
+
+if [ -d /run/s6/legacy-services/custom-service-${1} ] ; then
+    if [ -z ${2+x} ] ; then
+        echo "Flag \"up\" or \"down\" not defined"
+        exit 1
+    fi
+    case "${2}" in
+        "up") flag="u";;
+        "down") flag="d";;
+        *) echo "Use \"up\" or \"down\" as second parameter" & exit 1;;
+    esac
+    s6-svc -${flag} /run/s6/legacy-services/custom-service-$1
+else
+    echo "Service not found"
+    exit 1
+fi
+}
+
+cust-service "$@"
