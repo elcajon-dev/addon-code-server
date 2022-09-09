@@ -1,0 +1,66 @@
+#!/command/with-contenv bashio
+# ==============================================================================
+# Home Assistant Community Add-on: Code Server
+# Runs the code server
+# ==============================================================================
+declare -a options
+
+bashio::log.info 'Starting the code server...'
+
+options+=(--port 1337)
+options+=(--user-data-dir "/data/code-server")
+options+=(--extensions-dir "/data/code-server/extensions")
+options+=(--host 0.0.0.0)
+options+=(--disable-telemetry)
+options+=(--disable-update-check)
+
+# Set log level if exists 
+if bashio::config.exists log_level; then
+  log_level=$(bashio::string.lower "$(bashio::config log_level)")
+  case "${log_level}" in
+    all)
+        log_level="trace"
+        ;;
+    trace)
+        log_level="trace"
+        ;;
+    debug)
+        log_level="debug"
+        ;;
+    info)
+        log_level="info"
+        ;;
+    notice)
+        log_level="info"
+        ;;
+    warning)
+        log_level="warn"
+        ;;
+    error)
+        log_level="error"
+        ;;
+    fatal)
+        log_level="error"
+        ;;
+    off)
+        log_level="error"
+        ;;
+    *)
+        bashio::exit.nok "Unknown log_level: ${log_level}"
+  esac
+  options+=(--log $log_level)
+fi
+
+
+# Disable code authentication, we use HA authentication
+options+=(--auth none)
+
+# Set default workspace as last argument
+options+=(/root)
+
+# Export env variables for the Home Assistant extension
+export HASS_SERVER="http://supervisor/core"
+export HASS_TOKEN="${SUPERVISOR_TOKEN:-}"
+
+# Run the code server
+exec code-server "${options[@]}"

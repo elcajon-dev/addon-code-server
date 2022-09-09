@@ -1,0 +1,61 @@
+#!/command/with-contenv bashio
+# ==============================================================================
+# Home Assistant Add-on: Code Server
+# Runs user defined init scripts and installs provided services
+# ==============================================================================
+
+# Directories
+if bashio::config.exists init_path; then
+  init_path="$(bashio::config init_path | sed 's/\/$//')"
+  SCRIPTS_DIR="${init_path}/code-server/custom-cont-init.d"
+  SERVICES_DIR="${init_path}/code-server/custom-services.d"
+else
+  bashio::exit.ok
+fi
+
+mkdir -p $SCRIPTS_DIR
+mkdir -p $SERVICES_DIR
+
+# Remove all existing custom services before continuing to ensure
+# we aren't running anything the user may have removed
+if [ -n "$(/bin/ls -A /etc/services.d/custom-service-* 2>/dev/null)" ]; then
+  bashio::log.debug "removing existing custom services..."
+  rm -rf /etc/services.d/custom-service-*
+fi
+
+# Make sure custom init directory exists and has files in it
+if ([ -e "${SCRIPTS_DIR}" ] && \
+   [ -n "$(/bin/ls -A ${SCRIPTS_DIR} 2>/dev/null)" ]) || \
+   ([ -e "${SERVICES_DIR}" ] && \
+   [ -n "$(/bin/ls -A ${SERVICES_DIR} 2>/dev/null)" ]); then
+    if [ -n "$(/bin/ls -A ${SCRIPTS_DIR} 2>/dev/null)" ]; then
+      bashio::log.info "Files found in ${SCRIPTS_DIR} executing"
+      for SCRIPT in ${SCRIPTS_DIR}/*; do
+        NAME="$(basename "${SCRIPT}")"
+        if [ -f "${SCRIPT}" ]; then
+          bashio::log.info " ${NAME}: executing..."
+          /usr/bin/bashio ${SCRIPT}
+          bashio::log.info "${NAME}: exited $?"
+        elif [ ! -f "${SCRIPT}" ]; then
+          bashio::log.warning "${NAME}: is not a file"
+        fi
+      done
+    fi
+    if [ -n "$(/usr/bin/find ${SERVICES_DIR} -maxdepth 1 -mindepth 1 -type d  2>/dev/null)" ]; then
+        bashio::log.info "Service directories found in ${SERVICES_DIR}"
+        for SERVICE in $(/usr/bin/find ${SERVICES_DIR} -maxdepth 1 -mindepth 1 -type d); do
+        NAME="$(basename "${SERVICE}")"
+        if [ -d "${SERVICE}" ]; then
+          bashio::log.info "${NAME}: service detected, copying..."
+          mkdir -p /etc/services.d/custom-service-${NAME}/
+          cp -r ${SERVICE}/* /etc/services.d/custom-service-${NAME}/
+          chmod +x /etc/services.d/custom-service-${NAME}/*
+          bashio::log.debug "${NAME}: copied"
+        elif [ ! -d "${SERVICE}" ]; then
+          bashio::log.warning "${NAME}: is not a directory"
+        fi
+      done
+    fi
+else
+  bashio::log.debug "No custom files found exiting..."
+fi

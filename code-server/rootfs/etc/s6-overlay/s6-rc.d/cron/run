@@ -1,0 +1,8 @@
+#!/command/with-contenv bashio
+# ==============================================================================
+# Home Assistant Add-on: Code Server
+# Runs the code server
+# ==============================================================================
+bashio::log.info 'Starting cron service...'
+exec 2>&1
+exec cron -f -L 15
