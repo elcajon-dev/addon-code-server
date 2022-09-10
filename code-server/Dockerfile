@@ -59,7 +59,7 @@ RUN \
         ca-certificates=20210119 \
         curl=7.74.0-1.3+deb11u2 \
         gnupg=2.2.27-2+deb11u2 \
-        unzip=6.0-26 \
+        unzip=6.0-26+deb11u1 \
         cron=3.0pl1-137 \
         lsb-release=11.1.0 \
         openssh-server=1:8.4p1-5+deb11u1 \
