@@ -4,4 +4,4 @@ build_from:
   amd64: ghcr.io/hassio-addons/debian-base:6.1.1
 codenotary:
   base_image: codenotary@frenck.dev
-  signer: agonist02_stiel@icloud.com
+  signer: codenotary@elcajon.dev
