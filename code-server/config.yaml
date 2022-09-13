@@ -4,7 +4,7 @@ version: dev
 slug: code-server
 description: Code Server experience integrated in the Home Assistant frontend.
 url: https://github.com/elcajon-tech/addon-code-server
-codenotary: agonist02_stiel@icloud.com
+codenotary: codenotary@elcajon.dev
 ingress: true
 ingress_port: 1337
 ingress_stream: true
