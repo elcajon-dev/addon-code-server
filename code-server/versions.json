@@ -4,5 +4,5 @@
   "bcicen/ctop": "v0.7.7",
   "rclone/rclone": "v1.59.2",
   "tailscale/tailscale": "v1.30.2",
-  "cloudflare/cloudflared": "2022.9.0"
+  "cloudflare/cloudflared": "2022.9.1"
 }
