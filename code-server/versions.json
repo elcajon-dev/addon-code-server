@@ -5,5 +5,5 @@
   "rclone/rclone": "v1.59.2",
   "tailscale/tailscale": "v1.32.0",
   "cloudflare/cloudflared": "2022.10.1",
-  "mikefarah/yq": "v4.28.1"
+  "mikefarah/yq": "v4.28.2"
 }
