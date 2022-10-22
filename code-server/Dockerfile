@@ -137,6 +137,12 @@ RUN \
     && curl -J -L -s -o /tmp/rclone.deb "https://github.com/rclone/rclone/releases/download/${version}/rclone-${version}-linux-${ARCH}.deb" \
     && dpkg -i /tmp/rclone.deb &> /dev/null \
     \
+    && version=$(jq -r '."caddyserver/caddy"' /tmp/versions.json) \
+    && version_short=$(jq -r '."caddyserver/caddy"' /tmp/versions.json | sed 's/[[:alpha:]([:space:]]//g' ) \
+    && curl -L -s  \
+        "https://github.com/caddyserver/caddy/releases/download/${version}/caddy_${version_short}_linux_${ARCH}.tar.gz" \
+        | tar zxvf - -C /usr/local/bin/ --strip-components 1
+    \
     && version=$(jq -r '."tailscale/tailscale"' /tmp/versions.json | sed 's/[[:alpha:]([:space:]]//g' ) \
     && curl -L -s \
         "https://pkgs.tailscale.com/stable/tailscale_${version}_${ARCH}.tgz" \
