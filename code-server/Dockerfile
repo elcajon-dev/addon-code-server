@@ -141,7 +141,8 @@ RUN \
     && version_short=$(jq -r '."caddyserver/caddy"' /tmp/versions.json | sed 's/[[:alpha:]([:space:]]//g' ) \
     && curl -L -s  \
         "https://github.com/caddyserver/caddy/releases/download/${version}/caddy_${version_short}_linux_${ARCH}.tar.gz" \
-        | tar zxvf - -C /usr/local/bin/ --strip-components 1 \
+        | tar zxvf - -C /tmp/ \
+    && mv /tmp/caddy /usr/local/bin/ \
     \
     && version=$(jq -r '."tailscale/tailscale"' /tmp/versions.json | sed 's/[[:alpha:]([:space:]]//g' ) \
     && curl -L -s \
