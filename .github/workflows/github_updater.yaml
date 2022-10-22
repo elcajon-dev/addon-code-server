@@ -23,7 +23,7 @@ jobs:
         id: information
         run: |
           repositories=$(jq -rc 'keys' $VERSION_FILE_PATH )
-          echo "::set-output name=repositories::$repositories"
+          echo "repositories=$repositories" >> $GITHUB_OUTPUT
 
   build:
     name: Check ${{ matrix.repository }}
@@ -55,9 +55,9 @@ jobs:
           latest_version="${{ steps.version.outputs.release }}"
           current_version=$(jq -r '."${{ matrix.repository }}"' $VERSION_FILE_PATH)
           if [ "$(printf '%s\n' "$latest_version" "$current_version" | sort -V | head -n1)" = "$latest_version" ]; then
-                  echo "::set-output name=update_available::false"
+                  echo "update_available=false" >> $GITHUB_OUTPUT
           else
-                  echo "::set-output name=update_available::true"
+                  echo "update_available=true" >> $GITHUB_OUTPUT
           fi
 
       - name: 🚀 Update version file

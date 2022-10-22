@@ -1,4 +1,5 @@
 ---
+# yamllint disable rule:line-length
 name: Report an issue with Home Assistant Add-On Code-Server
 description: Report an issue with Home Assistant Add-On Code-Server.
 body:
