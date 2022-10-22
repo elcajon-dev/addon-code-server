@@ -148,6 +148,8 @@ RUN \
     && curl -L -s \
         "https://pkgs.tailscale.com/stable/tailscale_${version}_${ARCH}.tgz" \
         | tar zxvf - -C /opt/ --strip-components 1 \
+    && ln -s /opt/tailscale /usr/local/bin/ \
+    && ln -s /opt/tailscaled /usr/local/bin/ \
     \
     && version=$(jq -r '."cloudflare/cloudflared"' /tmp/versions.json) \
     && curl -J -L -s -o /usr/bin/cloudflared "https://github.com/cloudflare/cloudflared/releases/download/${version}/cloudflared-linux-${ARCH}" \
