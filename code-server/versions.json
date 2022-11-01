@@ -1,6 +1,6 @@
 {
   "coder/code-server": "v4.8.1",
-  "home-assistant/cli": "4.21.0",
+  "home-assistant/cli": "4.22.0",
   "bcicen/ctop": "v0.7.7",
   "rclone/rclone": "v1.60.0",
   "tailscale/tailscale": "v1.32.2",
