@@ -2,7 +2,7 @@
   "coder/code-server": "v4.8.3",
   "home-assistant/cli": "4.23.0",
   "bcicen/ctop": "v0.7.7",
-  "rclone/rclone": "v1.60.0",
+  "rclone/rclone": "v1.60.1",
   "tailscale/tailscale": "v1.32.2",
   "cloudflare/cloudflared": "2022.10.3",
   "mikefarah/yq": "v4.30.4",
