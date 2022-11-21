@@ -3,7 +3,7 @@
   "home-assistant/cli": "4.23.0",
   "bcicen/ctop": "v0.7.7",
   "rclone/rclone": "v1.60.1",
-  "tailscale/tailscale": "v1.32.2",
+  "tailscale/tailscale": "v1.32.3",
   "cloudflare/cloudflared": "2022.10.3",
   "mikefarah/yq": "v4.30.4",
   "caddyserver/caddy": "v2.6.2"
