@@ -1,4 +1,4 @@
-ARG BUILD_FROM=ghcr.io/hassio-addons/debian-base:6.1.3
+ARG BUILD_FROM=ghcr.io/hassio-addons/debian-base:6.2.0
 
 # Setup base system
 ARG BUILD_ARCH=amd64
@@ -190,7 +190,12 @@ RUN \
     \ 
     && rm -fr \
         /etc/cron.d/* \
-        /etc/cron.daily/*
+        /etc/cron.daily/* \
+    \
+    && rm -fr \
+    /package/admin/s6-overlay/etc/s6-rc/sources/base/contents.d/legacy-cont-init \
+    /package/admin/s6-overlay/etc/s6-rc/sources/base/contents.d/fix-attrs \
+    /package/admin/s6-overlay/etc/s6-rc/sources/top/contents.d/legacy-services
 
 # Copy root filesystem
 COPY rootfs /
