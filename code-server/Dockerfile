@@ -39,8 +39,8 @@ RUN \
         colordiff=1.0.18-1.1 \
         git=1:2.30.2-1 \
         iputils-ping=3:20210202-1 \
-        locales=2.31-13+deb11u4 \
-        mariadb-client=1:10.5.15-0+deb11u1 \
+        locales=2.31-13+deb11u5 \
+        mariadb-client=1:10.5.18-0+deb11u1 \
         mosquitto-clients=2.0.11-1 \
         net-tools=1.60+git20181103.0eebece-1 \
         nmap=7.91+dfsg1+really7.80+dfsg1-2 \
@@ -54,7 +54,7 @@ RUN \
         zip=3.0-12 \
         zsh=5.8-6+deb11u1 \
         less=551-2 \
-        nano=5.4-2+deb11u1 \
+        nano=5.4-2+deb11u2 \
         apt-transport-https=2.2.4 \
         ca-certificates=20210119 \
         curl=7.74.0-1.3+deb11u3 \
