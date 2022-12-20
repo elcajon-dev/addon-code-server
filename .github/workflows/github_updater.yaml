@@ -42,12 +42,13 @@ jobs:
         with:
           app_id: ${{ secrets.APP_ID }}
           private_key: ${{ secrets.APP_SECRET }}
-      - name: ℹ️ Gather Cloudflared latest version
+      - name: ℹ️ Gather latest release version
+        uses: rez0n/actions-github-release@main
         id: version
-        uses: pozetroninc/github-action-get-latest-release@master
-        with:
+        env:
+          token: ${{ secrets.GITHUB_TOKEN }}
           repository: ${{ matrix.repository }}
-          excludes: "prerelease, draft"
+          type: "stable"
 
       - name: 🚀 Compare installed and latest version
         id: compare_versions
