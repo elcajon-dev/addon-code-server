@@ -193,9 +193,7 @@ RUN \
         /etc/cron.daily/* \
     \
     && rm -fr \
-    /package/admin/s6-overlay/etc/s6-rc/sources/base/contents.d/legacy-cont-init \
-    /package/admin/s6-overlay/etc/s6-rc/sources/base/contents.d/fix-attrs \
-    /package/admin/s6-overlay/etc/s6-rc/sources/top/contents.d/legacy-services
+    /package/admin/s6-overlay/etc/s6-rc/sources/base/contents.d/fix-attrs 
 
 # Copy root filesystem
 COPY rootfs /
