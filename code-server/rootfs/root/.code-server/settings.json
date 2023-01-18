@@ -45,7 +45,7 @@
     "**/__pycache__": true,
     "**/.bashrc": true,
     "**/*.db-shm": true,
-    "**/*.db-wal": true,    
+    "**/*.db-wal": true,
     "**/deps/**": true,
     "**/.code-server": true,
     "**/.config": true,
