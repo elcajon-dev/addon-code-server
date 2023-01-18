@@ -2,7 +2,7 @@
   "files.associations": {
     "*.dash": "yaml",
     "**/esphome/*.yaml": "esphome",
-    "*.yaml": "home-assistant"
+    "**/config/*.yaml": "home-assistant"
   },
   "files.watcherExclude": {
     ".nfs**": true,
@@ -43,25 +43,28 @@
   "files.exclude": {
     ".Trash-0/**": true,
     "**/__pycache__": true,
-    "**/.cloud": true,
-    "**/.DS_Store": true,
-    "**/.git": true,
-    "**/.HA_VERSION": true,
-    "**/*.db": true,
+    "**/.bashrc": true,
     "**/*.db-shm": true,
-    "**/*.db-wal": true,
+    "**/*.db-wal": true,    
     "**/deps/**": true,
-    "**/home-assistant.log.*": true,
     "**/.code-server": true,
+    "**/.config": true,
+    "**/.DS_Store": true,
+    "**/.gitconfig": true,
+    "**/.HA_VERSION": true,
+    "**/.hg": true,
     "**/.local": true,
     "**/.oh-my-zsh": true,
+    "**/.profile": true,
+    "**/.redhat": true,
+    "**/.ssh": true,
+    "**/.svn": true,
     "**/.zcompdump*": true,
     "**/.zsh*": true,
-    "**/.profile": true,
-    "**/.gitconfig": true,
-    "**/.bashrc": true,
-    "**/.config": true,
-    "**/.ssh": true
+    "**/*.crswap": true,
+    "**/CVS": true,
+    "**/deps": true,
+    "**/Thumbs.db": true
   },
   "yaml.customTags": [
     "!env_var scalar",
@@ -106,5 +109,8 @@
   "workbench.startupEditor": "none",
   "git.confirmSync": false,
   "git.autofetch": true,
-  "editor.formatOnSave": true
+  "editor.formatOnSave": true,
+  "git.enableSmartCommit": true,
+  "redhat.telemetry.enabled": false,
+  "git.ignoredRepositories": ["/root/.oh-my-zsh"]
 }
