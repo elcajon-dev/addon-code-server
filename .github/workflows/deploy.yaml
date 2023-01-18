@@ -40,7 +40,7 @@ jobs:
         uses: actions/checkout@v3
       - name: 🚀 Run add-on information action
         id: information
-        uses: frenck/action-addon-information@v1.4.1
+        uses: frenck/action-addon-information@v1.4.2
       - name: 🚀 Process possible slug override
         id: override
         run: |
@@ -117,7 +117,7 @@ jobs:
           asset: docker://${{ steps.flags.outputs.from }}
           signerID: ${{ needs.information.outputs.base_image_signer }}
       - name: 🚀 Build
-        uses: docker/build-push-action@v3.2.0
+        uses: docker/build-push-action@v3.3.0
         with:
           load: true
           # yamllint disable rule:line-length

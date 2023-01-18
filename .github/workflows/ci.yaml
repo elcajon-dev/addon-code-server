@@ -28,7 +28,7 @@ jobs:
         uses: actions/checkout@v3
       - name: 🚀 Run add-on information action
         id: information
-        uses: frenck/action-addon-information@v1.4.1
+        uses: frenck/action-addon-information@v1.4.2
       - name: 🚀 Process possible slug override
         id: override
         run: |
@@ -103,7 +103,7 @@ jobs:
       - name: ⤵️ Check out code from GitHub
         uses: actions/checkout@v3
       - name: 🚀 Run YAMLLint
-        uses: frenck/action-yamllint@v1.3
+        uses: frenck/action-yamllint@v1.4
 
   lint-prettier:
     name: Prettier
@@ -171,7 +171,7 @@ jobs:
           asset: docker://${{ steps.flags.outputs.from }}
           signerID: ${{ needs.information.outputs.base_image_signer }}
       - name: 🚀 Build
-        uses: docker/build-push-action@v3.2.0
+        uses: docker/build-push-action@v3.3.0
         with:
           push: false
           context: ${{ needs.information.outputs.target }}
