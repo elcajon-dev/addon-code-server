@@ -4,7 +4,7 @@
   "bcicen/ctop": "v0.7.7",
   "rclone/rclone": "v1.61.1",
   "tailscale/tailscale": "v1.36.0",
-  "cloudflare/cloudflared": "2023.1.0",
+  "cloudflare/cloudflared": "2023.2.1",
   "mikefarah/yq": "v4.30.8",
   "caddyserver/caddy": "v2.6.2"
 }
