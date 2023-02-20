@@ -1,4 +1,4 @@
-ARG BUILD_FROM=ghcr.io/hassio-addons/debian-base:6.2.1
+ARG BUILD_FROM=ghcr.io/hassio-addons/debian-base:6.2.2
 
 # Setup base system
 ARG BUILD_ARCH=amd64
@@ -45,7 +45,7 @@ RUN \
         net-tools=1.60+git20181103.0eebece-1 \
         nmap=7.91+dfsg1+really7.80+dfsg1-2 \
         openssh-client=1:8.4p1-5+deb11u1 \
-        openssl=1.1.1n-0+deb11u3 \
+        openssl=1.1.1n-0+deb11u4 \
         python3-dev=3.9.2-3 \
         python3=3.9.2-3 \
         unzip=6.0-26+deb11u1 \
@@ -57,7 +57,7 @@ RUN \
         nano=5.4-2+deb11u2 \
         apt-transport-https=2.2.4 \
         ca-certificates=20210119 \
-        curl=7.74.0-1.3+deb11u3 \
+        curl=7.74.0-1.3+deb11u5 \
         gnupg=2.2.27-2+deb11u2 \
         unzip=6.0-26+deb11u1 \
         cron=3.0pl1-137 \
