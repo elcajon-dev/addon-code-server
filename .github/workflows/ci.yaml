@@ -115,7 +115,7 @@ jobs:
           ref: ${{ github.head_ref }}
           persist-credentials: false
       - name: 🚀 Run Prettier
-        uses: creyD/prettier_action@v4.2
+        uses: creyD/prettier_action@v4.3
         with:
           prettier_options: --write **/*.{json,js,md,yaml}
           GITHUB_TOKEN: ${{ secrets.UPDATER_TOKEN }}
