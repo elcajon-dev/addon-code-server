@@ -1,4 +1,4 @@
-ARG BUILD_FROM=ghcr.io/hassio-addons/debian-base:6.2.1
+ARG BUILD_FROM=ghcr.io/hassio-addons/debian-base:6.2.2
 
 # Setup base system
 ARG BUILD_ARCH=amd64
