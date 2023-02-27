@@ -200,7 +200,7 @@ jobs:
           app_id: ${{ secrets.APP_ID }}
           private_key: ${{ secrets.APP_SECRET }}
       - name: 🚀 Dispatch repository updater update signal
-        uses: peter-evans/repository-dispatch@v2.0.0
+        uses: peter-evans/repository-dispatch@v2
         with:
           token: ${{ steps.token.outputs.token }}
           repository: ${{ github.repository_owner }}/repository-stable
