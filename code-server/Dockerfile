@@ -63,6 +63,8 @@ RUN \
         lsb-release=11.1.0 \
         openssh-server=1:8.4p1-5+deb11u1 \
         git-crypt=0.6.0-1 \
+        php=2:7.4+76 \
+        php-curl=2:7.4+76 \
     \
     && sed -i -e 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen \
     && locale-gen \
