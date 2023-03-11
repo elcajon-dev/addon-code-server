@@ -130,7 +130,7 @@ RUN \
     \
     && pip3 install --no-cache-dir -r /tmp/requirements.txt \
     \
-    && version=$(jq -r '."bcicen/ctop"' /tmp/versions.json | sed 's/[[:alpha:]([:space:]]//g' )
+    && version=$(jq -r '."bcicen/ctop"' /tmp/versions.json | sed 's/[[:alpha:]([:space:]]//g' ) \
     && curl -J -L -s -o /usr/local/bin/ctop "https://github.com/bcicen/ctop/releases/download/v${version}/ctop-${version}-linux-${ARCH}"  \
     &&  chmod +x /usr/local/bin/ctop \
     \
