@@ -5,6 +5,6 @@
   "rclone/rclone": "v1.62.2",
   "tailscale/tailscale": "v1.38.1",
   "cloudflare/cloudflared": "2023.3.1",
-  "mikefarah/yq": "v4.32.1",
+  "mikefarah/yq": "v4.32.2",
   "caddyserver/caddy": "v2.6.4"
 }
