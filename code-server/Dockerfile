@@ -1,5 +1,8 @@
 ARG BUILD_FROM=ghcr.io/hassio-addons/debian-base:6.2.3
 
+# hadolint ignore=DL3006
+FROM ${BUILD_FROM}
+
 # Setup base system
 ARG BUILD_ARCH=amd64
 ARG CODE_SERVER_VERSION="v4.11.0"
@@ -10,9 +13,6 @@ ARG CADDY_VERSION="v2.6.4"
 ARG TAILSCALE_VERSION="v1.38.2"
 ARG CLOUFLARED_VERSION="2023.3.1"
 ARG YQ_VERSION="v4.32.2"
-
-# hadolint ignore=DL3006
-FROM ${BUILD_FROM}
 
 # Confiure locale
 ENV \
