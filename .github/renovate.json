@@ -96,23 +96,20 @@
       "fileMatch": ["code-server/code-server.extensions$"],
       "matchStrings": ["emilast\\.LogFileHighlighter#(?<currentValue>.+)\\s"],
       "datasourceTemplate": "github-releases",
-      "depNameTemplate": "emilast/vscode-logfile-highlighter",
-      "extractVersion": "^v(?<version>.*)$"
+      "depNameTemplate": "emilast/vscode-logfile-highlighter"
     },
     {
       "fileMatch": ["code-server/code-server.extensions$"],
       "matchStrings": ["esbenp\\.prettier-vscode#(?<currentValue>.+)\\s"],
       "datasourceTemplate": "github-releases",
-      "depNameTemplate": "prettier/prettier-vscode",
-      "extractVersion": "^v(?<version>.*)$"
+      "depNameTemplate": "prettier/prettier-vscode"
     },
     {
       "fileMatch": ["code-server/code-server.extensions$"],
       "matchStrings": ["ESPHome\\.esphome-vscode#(?<currentValue>.+)\\s"],
       "datasourceTemplate": "github-releases",
       "depNameTemplate": "esphome/esphome-vscode",
-      "versioningTemplate": "loose",
-      "extractVersion": "^v(?<version>.*)$"
+      "versioningTemplate": "loose"
     },
     {
       "fileMatch": ["code-server/code-server.extensions$"],
@@ -120,8 +117,7 @@
         "keesschollaart\\.vscode-home-assistant#(?<currentValue>.+)\\s"
       ],
       "datasourceTemplate": "github-releases",
-      "depNameTemplate": "keesschollaart81/vscode-home-assistant",
-      "extractVersion": "^v(?<version>.*)$"
+      "depNameTemplate": "keesschollaart81/vscode-home-assistant"
     },
     {
       "fileMatch": ["code-server/code-server.extensions$"],
@@ -129,50 +125,43 @@
         "lukas-tr\\.materialdesignicons-intellisense#(?<currentValue>.+)\\s"
       ],
       "datasourceTemplate": "github-releases",
-      "depNameTemplate": "lukas-tr/vscode-materialdesignicons-intellisense",
-      "extractVersion": "^v(?<version>.*)$"
+      "depNameTemplate": "lukas-tr/vscode-materialdesignicons-intellisense"
     },
     {
       "fileMatch": ["code-server/code-server.extensions$"],
       "matchStrings": ["netcorext\\.uuid-generator#(?<currentValue>.+)\\s"],
       "datasourceTemplate": "github-releases",
-      "depNameTemplate": "arenchen/vscode-uuid-generator",
-      "extractVersion": "^v(?<version>.*)$"
+      "depNameTemplate": "arenchen/vscode-uuid-generator"
     },
     {
       "fileMatch": ["code-server/code-server.extensions$"],
       "matchStrings": ["usernamehw\\.errorlens#(?<currentValue>.+)\\s"],
       "datasourceTemplate": "github-releases",
-      "depNameTemplate": "usernamehw/vscode-error-lens",
-      "extractVersion": "^v(?<version>.*)$"
+      "depNameTemplate": "usernamehw/vscode-error-lens"
     },
     {
       "fileMatch": ["code-server/code-server.extensions$"],
       "matchStrings": ["redhat\\.vscode-yaml#(?<currentValue>.+)\\s"],
       "datasourceTemplate": "github-releases",
-      "depNameTemplate": "redhat-developer/vscode-yaml",
-      "extractVersion": "^v(?<version>.*)$"
+      "depNameTemplate": "redhat-developer/vscode-yaml"
     },
     {
       "fileMatch": ["code-server/code-server.extensions$"],
       "matchStrings": ["ms-azuretools\\.vscode-docker#(?<currentValue>.+)\\s"],
       "datasourceTemplate": "github-releases",
-      "depNameTemplate": "microsoft/vscode-docker",
-      "extractVersion": "^v(?<version>.*)$"
+      "depNameTemplate": "microsoft/vscode-docker"
     },
     {
       "fileMatch": ["code-server/code-server.extensions$"],
       "matchStrings": ["pkief\\.material-icon-theme#(?<currentValue>.+)\\s"],
       "datasourceTemplate": "github-releases",
-      "depNameTemplate": "pkief/vscode-material-icon-theme",
-      "extractVersion": "^v(?<version>.*)$"
+      "depNameTemplate": "pkief/vscode-material-icon-theme"
     },
     {
       "fileMatch": ["code-server/code-server.extensions$"],
       "matchStrings": ["github\\.github-vscode-theme#(?<currentValue>.+)\\s"],
       "datasourceTemplate": "github-releases",
-      "depNameTemplate": "primer/github-vscode-theme",
-      "extractVersion": "^v(?<version>.*)$"
+      "depNameTemplate": "primer/github-vscode-theme"
     }
   ],
   "packageRules": [
@@ -194,6 +183,11 @@
       "matchDatasources": ["github-releases"],
       "matchUpdateTypes": ["minor", "patch"],
       "automerge": true
+    },
+    {
+      "matchDatasources": ["github-releases"],
+      "fileMatch": ["code-server/code-server.extensions$"],
+      "extractVersion": "^v(?<version>.*)$"
     },
     {
       "matchManagers": ["pip_requirements"],
