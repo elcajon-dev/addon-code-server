@@ -78,6 +78,7 @@ RUN \
     \
     && if [[ "${BUILD_ARCH}" = "aarch64" ]]; then ARCH="arm64"; fi \
     && if [[ "${BUILD_ARCH}" = "amd64" ]]; then ARCH="amd64"; fi \
+    && echo "Installing Code-Server version ${CODE_SERVER_VERSION#v}" \
     && curl -J -L -s -o /tmp/code.tar.gz \
         "https://github.com/coder/code-server/releases/download/${CODE_SERVER_VERSION}/code-server-${CODE_SERVER_VERSION#v}-linux-${ARCH}.tar.gz" \
     && mkdir -p /usr/local/lib/code-server \
