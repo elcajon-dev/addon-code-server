@@ -96,20 +96,23 @@
       "fileMatch": ["code-server/code-server.extensions$"],
       "matchStrings": ["emilast\\.LogFileHighlighter#(?<currentValue>.+)\\s"],
       "datasourceTemplate": "github-releases",
-      "depNameTemplate": "emilast/vscode-logfile-highlighter"
+      "depNameTemplate": "emilast/vscode-logfile-highlighter",
+      "extractVersion": "^v(?<version>.*)$"
     },
     {
       "fileMatch": ["code-server/code-server.extensions$"],
       "matchStrings": ["esbenp\\.prettier-vscode#(?<currentValue>.+)\\s"],
       "datasourceTemplate": "github-releases",
-      "depNameTemplate": "prettier/prettier-vscode"
+      "depNameTemplate": "prettier/prettier-vscode",
+      "extractVersion": "^v(?<version>.*)$"
     },
     {
       "fileMatch": ["code-server/code-server.extensions$"],
       "matchStrings": ["ESPHome\\.esphome-vscode#(?<currentValue>.+)\\s"],
       "datasourceTemplate": "github-releases",
       "depNameTemplate": "esphome/esphome-vscode",
-      "versioningTemplate": "loose"
+      "versioningTemplate": "loose",
+      "extractVersion": "^v(?<version>.*)$"
     },
     {
       "fileMatch": ["code-server/code-server.extensions$"],
@@ -117,7 +120,8 @@
         "keesschollaart\\.vscode-home-assistant#(?<currentValue>.+)\\s"
       ],
       "datasourceTemplate": "github-releases",
-      "depNameTemplate": "keesschollaart81/vscode-home-assistant"
+      "depNameTemplate": "keesschollaart81/vscode-home-assistant",
+      "extractVersion": "^v(?<version>.*)$"
     },
     {
       "fileMatch": ["code-server/code-server.extensions$"],
@@ -125,43 +129,50 @@
         "lukas-tr\\.materialdesignicons-intellisense#(?<currentValue>.+)\\s"
       ],
       "datasourceTemplate": "github-releases",
-      "depNameTemplate": "lukas-tr/vscode-materialdesignicons-intellisense"
+      "depNameTemplate": "lukas-tr/vscode-materialdesignicons-intellisense",
+      "extractVersion": "^v(?<version>.*)$"
     },
     {
       "fileMatch": ["code-server/code-server.extensions$"],
       "matchStrings": ["netcorext\\.uuid-generator#(?<currentValue>.+)\\s"],
       "datasourceTemplate": "github-releases",
-      "depNameTemplate": "arenchen/vscode-uuid-generator"
+      "depNameTemplate": "arenchen/vscode-uuid-generator",
+      "extractVersion": "^v(?<version>.*)$"
     },
     {
       "fileMatch": ["code-server/code-server.extensions$"],
       "matchStrings": ["usernamehw\\.errorlens#(?<currentValue>.+)\\s"],
       "datasourceTemplate": "github-releases",
-      "depNameTemplate": "usernamehw/vscode-error-lens"
+      "depNameTemplate": "usernamehw/vscode-error-lens",
+      "extractVersion": "^v(?<version>.*)$"
     },
     {
       "fileMatch": ["code-server/code-server.extensions$"],
       "matchStrings": ["redhat\\.vscode-yaml#(?<currentValue>.+)\\s"],
       "datasourceTemplate": "github-releases",
-      "depNameTemplate": "redhat-developer/vscode-yaml"
+      "depNameTemplate": "redhat-developer/vscode-yaml",
+      "extractVersion": "^v(?<version>.*)$"
     },
     {
       "fileMatch": ["code-server/code-server.extensions$"],
       "matchStrings": ["ms-azuretools\\.vscode-docker#(?<currentValue>.+)\\s"],
       "datasourceTemplate": "github-releases",
-      "depNameTemplate": "microsoft/vscode-docker"
+      "depNameTemplate": "microsoft/vscode-docker",
+      "extractVersion": "^v(?<version>.*)$"
     },
     {
       "fileMatch": ["code-server/code-server.extensions$"],
       "matchStrings": ["pkief\\.material-icon-theme#(?<currentValue>.+)\\s"],
       "datasourceTemplate": "github-releases",
-      "depNameTemplate": "pkief/vscode-material-icon-theme"
+      "depNameTemplate": "pkief/vscode-material-icon-theme",
+      "extractVersion": "^v(?<version>.*)$"
     },
     {
       "fileMatch": ["code-server/code-server.extensions$"],
       "matchStrings": ["github\\.github-vscode-theme#(?<currentValue>.+)\\s"],
       "datasourceTemplate": "github-releases",
-      "depNameTemplate": "primer/github-vscode-theme"
+      "depNameTemplate": "primer/github-vscode-theme",
+      "extractVersion": "^v(?<version>.*)$"
     }
   ],
   "packageRules": [
