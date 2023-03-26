@@ -2,6 +2,14 @@ ARG BUILD_FROM=ghcr.io/hassio-addons/debian-base:6.2.3
 
 # Setup base system
 ARG BUILD_ARCH=amd64
+ARG CODE_SERVER_VERSION="v4.11.0"
+ARG HA_CLI_VERSION="4.23.0"
+ARG RCLONE_VERSION="v1.62.2"
+ARG CTOP_VERSION="v0.7.7"
+ARG CADDY_VERSION="v2.6.4"
+ARG TAILSCALE_VERSION="v1.38.2"
+ARG CLOUFLARED_VERSION="2023.3.1"
+ARG YQ_VERSION="v4.32.2"
 
 # hadolint ignore=DL3006
 FROM ${BUILD_FROM}
@@ -21,9 +29,6 @@ COPY requirements.txt /tmp/requirements.txt
 
 # Copy in extensions list
 COPY code-server.extensions /etc/code-server.extensions
-
-# Copy in version file
-COPY versions.json /tmp/versions.json
 
 # Setup base system
 ARG BUILD_ARCH=amd64
@@ -73,10 +78,8 @@ RUN \
     \
     && if [[ "${BUILD_ARCH}" = "aarch64" ]]; then ARCH="arm64"; fi \
     && if [[ "${BUILD_ARCH}" = "amd64" ]]; then ARCH="amd64"; fi \
-    && version=$(jq -r '."coder/code-server"' /tmp/versions.json) \
-    && version_short=$(jq -r '."coder/code-server"' /tmp/versions.json | sed 's/[[:alpha:]([:space:]]//g' ) \
     && curl -J -L -s -o /tmp/code.tar.gz \
-        "https://github.com/coder/code-server/releases/download/${version}/code-server-${version_short}-linux-${ARCH}.tar.gz" \
+        "https://github.com/coder/code-server/releases/download/${CODE_SERVER_VERSION}/code-server-${CODE_SERVER_VERSION#v}-linux-${ARCH}.tar.gz" \
     && mkdir -p /usr/local/lib/code-server \
     && tar zxvf \
         /tmp/code.tar.gz \
@@ -108,9 +111,8 @@ RUN \
     done < /etc/code-server.extensions \
     && ls -la /usr/local/lib/code-server/lib/vscode/extensions/ \
     \
-    && version=$(jq -r '."home-assistant/cli"' /tmp/versions.json) \
     && curl -L -s -o /usr/bin/ha \
-        "https://github.com/home-assistant/cli/releases/download/${version}/ha_${BUILD_ARCH}" \
+        "https://github.com/home-assistant/cli/releases/download/${HA_CLI_VERSION}/ha_${BUILD_ARCH}" \
     && chmod a+x /usr/bin/ha \
     \
     && git clone --branch master --single-branch --depth 1 \
@@ -130,34 +132,27 @@ RUN \
     \
     && pip3 install --no-cache-dir -r /tmp/requirements.txt \
     \
-    && version=$(jq -r '."bcicen/ctop"' /tmp/versions.json | sed 's/[[:alpha:]([:space:]]//g' ) \
-    && curl -J -L -s -o /usr/local/bin/ctop "https://github.com/bcicen/ctop/releases/download/v${version}/ctop-${version}-linux-${ARCH}"  \
+    && curl -J -L -s -o /usr/local/bin/ctop "https://github.com/bcicen/ctop/releases/download/v${CTOP_VERSION#v}/ctop-${CTOP_VERSION#v}-linux-${ARCH}"  \
     &&  chmod +x /usr/local/bin/ctop \
     \
-    && version=$(jq -r '."rclone/rclone"' /tmp/versions.json) \
-    && curl -J -L -s -o /tmp/rclone.deb "https://github.com/rclone/rclone/releases/download/${version}/rclone-${version}-linux-${ARCH}.deb" \
+    && curl -J -L -s -o /tmp/rclone.deb "https://github.com/rclone/rclone/releases/download/${RCLONE_VERSION}/rclone-${RCLONE_VERSION}-linux-${ARCH}.deb" \
     && dpkg -i /tmp/rclone.deb &> /dev/null \
     \
-    && version=$(jq -r '."caddyserver/caddy"' /tmp/versions.json) \
-    && version_short=$(jq -r '."caddyserver/caddy"' /tmp/versions.json | sed 's/[[:alpha:]([:space:]]//g' ) \
     && curl -L -s  \
-        "https://github.com/caddyserver/caddy/releases/download/${version}/caddy_${version_short}_linux_${ARCH}.tar.gz" \
+        "https://github.com/caddyserver/caddy/releases/download/${CADDY_VERSION}/caddy_${CADDY_VERSION#v}_linux_${ARCH}.tar.gz" \
         | tar zxvf - -C /tmp/ \
     && mv /tmp/caddy /usr/local/bin/ \
     \
-    && version=$(jq -r '."tailscale/tailscale"' /tmp/versions.json | sed 's/[[:alpha:]([:space:]]//g' ) \
     && curl -L -s \
-        "https://pkgs.tailscale.com/stable/tailscale_${version}_${ARCH}.tgz" \
+        "https://pkgs.tailscale.com/stable/tailscale_${TAILSCALE_VERSION#v}_${ARCH}.tgz" \
         | tar zxvf - -C /opt/ --strip-components 1 \
     && ln -s /opt/tailscale /usr/local/bin/ \
     && ln -s /opt/tailscaled /usr/local/bin/ \
     \
-    && version=$(jq -r '."cloudflare/cloudflared"' /tmp/versions.json) \
-    && curl -J -L -s -o /usr/bin/cloudflared "https://github.com/cloudflare/cloudflared/releases/download/${version}/cloudflared-linux-${ARCH}" \
+    && curl -J -L -s -o /usr/bin/cloudflared "https://github.com/cloudflare/cloudflared/releases/download/${CLOUFLARED_VERSION}/cloudflared-linux-${ARCH}" \
     && chmod +x /usr/bin/cloudflared \
     \
-    && version=$(jq -r '."mikefarah/yq"' /tmp/versions.json) \
-    && curl -J -L -s -o /usr/bin/yq "https://github.com/mikefarah/yq/releases/download/${version}/yq_linux_${ARCH}" \
+    && curl -J -L -s -o /usr/bin/yq "https://github.com/mikefarah/yq/releases/download/${YQ_VERSION}/yq_linux_${ARCH}" \
     && chmod +x /usr/bin/yq \
     \
     && curl -fsSL https://download.docker.com/linux/ubuntu/gpg | gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg &> /dev/null \
