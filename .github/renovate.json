@@ -186,7 +186,7 @@
     },
     {
       "matchDatasources": ["github-releases"],
-      "matchFiles": ["code-server/code-server.extensions$"],
+      "matchPaths": ["**/code-server/code-server.extensions"],
       "extractVersion": "^v(?<version>.*)$"
     },
     {
