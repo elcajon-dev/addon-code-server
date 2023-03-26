@@ -1,0 +1,202 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "rebaseWhen": "behind-base-branch",
+  "dependencyDashboard": true,
+  "labels": ["dependencies", "no-stale"],
+  "commitMessagePrefix": "⬆️",
+  "commitMessageTopic": "{{depName}}",
+  "regexManagers": [
+    {
+      "fileMatch": ["/Dockerfile$", "/build.yaml$"],
+      "matchStringsStrategy": "any",
+      "matchStrings": [
+        "ARG BUILD_FROM=(?<depName>.*?):(?<currentValue>.*?)\\s+",
+        "(aarch64|amd64|armhf|armv7|i386):\\s[\"']?(?<depName>.*?):(?<currentValue>.*?)[\"']?\\s"
+      ],
+      "datasourceTemplate": "docker"
+    },
+    {
+      "fileMatch": ["/Dockerfile$"],
+      "matchStringsStrategy": "any",
+      "matchStrings": [
+        "\\s\\s(?<package>[a-z0-9][a-z0-9-]+)=(?<currentValue>[a-z0-9-:_+~.]+)\\s+"
+      ],
+      "versioningTemplate": "deb",
+      "datasourceTemplate": "repology",
+      "depNameTemplate": "debian_11/{{{replace 'openssh-client' 'openssh' package}}}"
+    },
+    {
+      "fileMatch": ["/Dockerfile$"],
+      "matchStrings": [
+        "ARG CODE_SERVER_VERSION=[\"']?(?<currentValue>.+?)[\"']?\\s+"
+      ],
+      "datasourceTemplate": "github-releases",
+      "depNameTemplate": "cdr/code-server"
+    },
+    {
+      "fileMatch": ["/Dockerfile$"],
+      "matchStrings": [
+        "ARG HA_CLI_VERSION=[\"']?(?<currentValue>.+?)[\"']?\\s+"
+      ],
+      "datasourceTemplate": "github-releases",
+      "depNameTemplate": "home-assistant/cli",
+      "versioningTemplate": "loose"
+    },
+    {
+      "fileMatch": ["/Dockerfile$"],
+      "matchStrings": [
+        "ARG RCLONE_VERSION=[\"']?(?<currentValue>.+?)[\"']?\\s+"
+      ],
+      "datasourceTemplate": "github-releases",
+      "depNameTemplate": "rclone/rclone",
+      "versioningTemplate": "loose"
+    },
+    {
+      "fileMatch": ["/Dockerfile$"],
+      "matchStrings": ["ARG CTOP_VERSION=[\"']?(?<currentValue>.+?)[\"']?\\s+"],
+      "datasourceTemplate": "github-releases",
+      "depNameTemplate": "bcicen/ctop",
+      "versioningTemplate": "loose"
+    },
+    {
+      "fileMatch": ["/Dockerfile$"],
+      "matchStrings": [
+        "ARG CADDY_VERSION=[\"']?(?<currentValue>.+?)[\"']?\\s+"
+      ],
+      "datasourceTemplate": "github-releases",
+      "depNameTemplate": "caddyserver/caddy",
+      "versioningTemplate": "loose"
+    },
+    {
+      "fileMatch": ["/Dockerfile$"],
+      "matchStrings": [
+        "ARG TAILSCALE_VERSION=[\"']?(?<currentValue>.+?)[\"']?\\s+"
+      ],
+      "datasourceTemplate": "github-releases",
+      "depNameTemplate": "tailscale/tailscale",
+      "versioningTemplate": "loose"
+    },
+    {
+      "fileMatch": ["/Dockerfile$"],
+      "matchStrings": [
+        "ARG CLOUFLARED_VERSION=[\"']?(?<currentValue>.+?)[\"']?\\s+"
+      ],
+      "datasourceTemplate": "github-releases",
+      "depNameTemplate": "cloudflare/cloudflared",
+      "versioningTemplate": "loose"
+    },
+    {
+      "fileMatch": ["/Dockerfile$"],
+      "matchStrings": ["ARG YQ_VERSION=[\"']?(?<currentValue>.+?)[\"']?\\s+"],
+      "datasourceTemplate": "github-releases",
+      "depNameTemplate": "mikefarah/yq",
+      "versioningTemplate": "loose"
+    },
+    {
+      "fileMatch": ["code-server/code-server.extensions$"],
+      "matchStrings": ["emilast\\.LogFileHighlighter#(?<currentValue>.+)\\s"],
+      "datasourceTemplate": "github-releases",
+      "depNameTemplate": "emilast/vscode-logfile-highlighter"
+    },
+    {
+      "fileMatch": ["code-server/code-server.extensions$"],
+      "matchStrings": ["esbenp\\.prettier-vscode#(?<currentValue>.+)\\s"],
+      "datasourceTemplate": "github-releases",
+      "depNameTemplate": "prettier/prettier-vscode"
+    },
+    {
+      "fileMatch": ["code-server/code-server.extensions$"],
+      "matchStrings": ["ESPHome\\.esphome-vscode#(?<currentValue>.+)\\s"],
+      "datasourceTemplate": "github-releases",
+      "depNameTemplate": "esphome/esphome-vscode",
+      "versioningTemplate": "loose"
+    },
+    {
+      "fileMatch": ["code-server/code-server.extensions$"],
+      "matchStrings": [
+        "keesschollaart\\.vscode-home-assistant#(?<currentValue>.+)\\s"
+      ],
+      "datasourceTemplate": "github-releases",
+      "depNameTemplate": "keesschollaart81/vscode-home-assistant"
+    },
+    {
+      "fileMatch": ["code-server/code-server.extensions$"],
+      "matchStrings": [
+        "lukas-tr\\.materialdesignicons-intellisense#(?<currentValue>.+)\\s"
+      ],
+      "datasourceTemplate": "github-releases",
+      "depNameTemplate": "lukas-tr/vscode-materialdesignicons-intellisense"
+    },
+    {
+      "fileMatch": ["code-server/code-server.extensions$"],
+      "matchStrings": ["netcorext\\.uuid-generator#(?<currentValue>.+)\\s"],
+      "datasourceTemplate": "github-releases",
+      "depNameTemplate": "arenchen/vscode-uuid-generator"
+    },
+    {
+      "fileMatch": ["code-server/code-server.extensions$"],
+      "matchStrings": ["usernamehw\\.errorlens#(?<currentValue>.+)\\s"],
+      "datasourceTemplate": "github-releases",
+      "depNameTemplate": "usernamehw/vscode-error-lens"
+    },
+    {
+      "fileMatch": ["code-server/code-server.extensions$"],
+      "matchStrings": ["redhat\\.vscode-yaml#(?<currentValue>.+)\\s"],
+      "datasourceTemplate": "github-releases",
+      "depNameTemplate": "redhat-developer/vscode-yaml"
+    },
+    {
+      "fileMatch": ["code-server/code-server.extensions$"],
+      "matchStrings": ["ms-azuretools\\.vscode-docker#(?<currentValue>.+)\\s"],
+      "datasourceTemplate": "github-releases",
+      "depNameTemplate": "microsoft/vscode-docker"
+    },
+    {
+      "fileMatch": ["code-server/code-server.extensions$"],
+      "matchStrings": ["pkief\\.material-icon-theme#(?<currentValue>.+)\\s"],
+      "datasourceTemplate": "github-releases",
+      "depNameTemplate": "pkief/vscode-material-icon-theme"
+    },
+    {
+      "fileMatch": ["code-server/code-server.extensions$"],
+      "matchStrings": ["github\\.github-vscode-theme#(?<currentValue>.+)\\s"],
+      "datasourceTemplate": "github-releases",
+      "depNameTemplate": "primer/github-vscode-theme"
+    }
+  ],
+  "packageRules": [
+    {
+      "matchDatasources": ["repology"],
+      "automerge": true
+    },
+    {
+      "groupName": "Add-on base image",
+      "matchDatasources": ["docker"]
+    },
+    {
+      "groupName": "Add-on base image",
+      "matchDatasources": ["docker"],
+      "matchUpdateTypes": ["patch"],
+      "automerge": true
+    },
+    {
+      "matchDatasources": ["github-releases"],
+      "matchUpdateTypes": ["minor", "patch"],
+      "automerge": true
+    },
+    {
+      "matchManagers": ["pip_requirements"],
+      "addLabels": ["python"]
+    },
+    {
+      "matchManagers": ["pip_requirements"],
+      "matchDepTypes": ["dev"],
+      "rangeStrategy": "pin"
+    },
+    {
+      "matchManagers": ["pip_requirements"],
+      "matchUpdateTypes": ["minor", "patch"],
+      "automerge": true
+    }
+  ]
+}
