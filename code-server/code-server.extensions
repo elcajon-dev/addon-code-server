@@ -10,3 +10,5 @@ redhat.vscode-yaml#1.11.10112022
 ms-azuretools.vscode-docker#1.24.0
 pkief.material-icon-theme#4.25.0
 github.github-vscode-theme#6.3.4
+DavidAnson.vscode-markdownlint#0.48.1
+GitHub.vscode-github-actions#0.25.2
