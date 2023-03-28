@@ -165,7 +165,9 @@
     },
     {
       "fileMatch": ["code-server/code-server.extensions$"],
-      "matchStrings": ["DavidAnson\\.vscode-markdownlint#(?<currentValue>.+)\\s"],
+      "matchStrings": [
+        "DavidAnson\\.vscode-markdownlint#(?<currentValue>.+)\\s"
+      ],
       "datasourceTemplate": "github-tags",
       "depNameTemplate": "DavidAnson/vscode-markdownlint"
     },
