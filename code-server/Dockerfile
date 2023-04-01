@@ -67,6 +67,7 @@ RUN \
         git-crypt=0.6.0-1 \
         php=2:7.4+76 \
         php-curl=2:7.4+76 \
+        ansible=2.10.7+merged+base+2.10.8+dfsg-1 \
     \
     && sed -i -e 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen \
     && locale-gen \
