@@ -170,6 +170,9 @@ RUN \
         python3-dev \
         uuid-runtime \
     \
+    && apt-get install -y --no-install-recommends \
+        ansible=2.10.7+merged+base+2.10.8+dfsg-1 \
+    \
     && find /usr/local \
         \( -type d -a -name test -o -name tests -o -name '__pycache__' \) \
         -o \( -type f -a -name '*.pyc' -o -name '*.pyo' \) \
