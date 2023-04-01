@@ -19,10 +19,6 @@ docker_api: true
 hassio_api: true
 hassio_role: manager
 homeassistant_api: true
-privileged:
-  - NET_ADMIN
-devices:
-  - /dev/net/tun
 map:
   - config:rw
   - ssl:rw
