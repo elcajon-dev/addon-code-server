@@ -7,5 +7,5 @@ configuration:
   init_path:
     name: Init script path
     description: >-
-      Defines the path for custom-config and custom-service scripts.
+      Defines the path for custom s6-rc scripts.
       Deactivated if config option is empty.

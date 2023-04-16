@@ -36,7 +36,7 @@ using [this GitHub repository][ha-addons] or by clicking the button below.
 
 The `init_path` option allows to set the path containing the custom
 init scripts and services. For exmpale `/share` will use directories:
-`/share/code-server/{cont-init.d,services.d}`.
+`/share/code-server/s6-overlay`.
 
 If this option isn't set, this function is disabled.
 
@@ -64,22 +64,12 @@ you are troubleshooting.
 ## Custom Init scripts
 
 When `init_path` configuration option is set. The add-on will generate
-the two folders `cont-init.d` and `services.d`.
+the relevant folders where you can place your s6-rc v3 scripts.
 
-Place your custom cont-init files inside the folder `cont-init.d` and
-they will be processed during add-on startup phase.
-
-Place your custom service file called `run` inside a
-subfolder of `services.d` and a corresponding service will run
-when the add-on starts.
-For example: `services.d/my-service/run` will spin up a service called `my-service`
-Place your service logic in the file called `run`.
+Check the s6 manual for more information on how to write s6-rc scripts.
 
 **Note**: _Please be aware that this is a really powerful function which can damage
 your whole system if handled incorrectly._
-
-**Note**: _Use command `cust-service` to control your custom services from code
-server terminal. Use `--help` for more information._
 
 ## Resetting your Code Server settings to the add-on defaults
 
