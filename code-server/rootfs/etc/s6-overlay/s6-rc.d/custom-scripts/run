@@ -39,7 +39,6 @@ s6-rc-update -b "/run/s6/db-${stamp}"
 
 # Start services defined in custom-services bundle
 s6-rc -b start custom-services
-bashio::log.info "Restarting custom services"
 
 }
 
