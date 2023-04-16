@@ -68,6 +68,7 @@ RUN \
         php=2:7.4+76 \
         php-curl=2:7.4+76 \
         netcat=1.10-46 \
+        htop=3.0.5-7 \
     \
     && sed -i -e 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen \
     && locale-gen \
