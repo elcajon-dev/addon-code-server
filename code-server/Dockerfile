@@ -85,7 +85,6 @@ RUN \
         --strip 1 -C /usr/local/lib/code-server \
     \
     && ln -s /usr/local/lib/code-server/bin/code-server /usr/local/bin/code-server \
-    && ln -s /usr/local/lib/code-server/bin/code-server /usr/local/bin/code \
     \
     && mkdir -p /root/.code-server/extensions \
     && uuid=$(uuidgen) \
@@ -170,8 +169,6 @@ RUN \
         python3-dev \
         uuid-runtime \
     \
-    && apt-get install -y --no-install-recommends \
-        ansible=2.10.7+merged+base+2.10.8+dfsg-1 \
     \
     && find /usr/local \
         \( -type d -a -name test -o -name tests -o -name '__pycache__' \) \
@@ -188,10 +185,7 @@ RUN \
     \ 
     && rm -fr \
         /etc/cron.d/* \
-        /etc/cron.daily/* \
-    \
-    && rm -fr \
-    /package/admin/s6-overlay/etc/s6-rc/sources/base/contents.d/fix-attrs 
+        /etc/cron.daily/* 
 
 # Copy root filesystem
 COPY rootfs /
