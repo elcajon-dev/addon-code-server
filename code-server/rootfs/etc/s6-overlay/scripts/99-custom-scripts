@@ -41,9 +41,9 @@ if ([ -e "${SCRIPTS_DIR}" ] && \
         fi
       done
     fi
-    if [ -n "$(/usr/bin/find ${SERVICES_DIR} -maxdepth 1 -mindepth 1 -type d  2>/dev/null)" ]; then
+    if [ -n "$(/usr/bin/find ${SERVICES_DIR} -maxdepth 1 -mindepth 1 -type d \( -name '.*' -prune -o -print \)  2>/dev/null)" ]; then
         bashio::log.info "Service directories found in ${SERVICES_DIR}"
-        for SERVICE in $(/usr/bin/find ${SERVICES_DIR} -maxdepth 1 -mindepth 1 -type d); do
+        for SERVICE in $(/usr/bin/find ${SERVICES_DIR} -maxdepth 1 -mindepth 1 -type d \( -name '.*' -prune -o -print \)); do
         NAME="$(basename "${SERVICE}")"
         if [ -d "${SERVICE}" ]; then
           bashio::log.info "${NAME}: service detected, copying..."
