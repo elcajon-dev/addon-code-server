@@ -7,5 +7,5 @@ configuration:
   init_path:
     name: Init Script Pfad
     description: >-
-      Pfad für die custom-config und custom-service Skripte.
+      Pfad für die benutzerspezifischen s6-rc Skripte.
       Funktion ist deaktiviert falls Wert leer ist.
