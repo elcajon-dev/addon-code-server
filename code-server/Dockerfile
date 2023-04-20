@@ -29,6 +29,20 @@ ARG CADDY_VERSION="v2.6.4"
 ARG TAILSCALE_VERSION="v1.38.4"
 ARG CLOUFLARED_VERSION="2023.4.1"
 ARG YQ_VERSION="v4.33.3"
+# renovate: datasource=repology depName=debian_11/build-essential-mipsen versioning=loose
+ARG build_essential_version="12.9"
+# renovate: datasource=repology depName=debian_11/locales versioning=loose
+ARG locales_version="2.31-13+deb11u5"
+# no-renovate: datasource=repology depName=debian_11/uuid-runtime versioning=loose
+ARG uuid_runtime_version="2.36.1-8+deb11u1"
+# renovate: datasource=repology depName=debian_11/gnupg versioning=loose
+ARG gnupg_version="2.2.27-2+deb11u2"
+# renovate: datasource=repology depName=debian_11/openssh versioning=loose
+ARG openssh_server_version="1:8.4p1-5+deb11u1"
+# renovate: datasource=repology depName=debian_11/openssh versioning=loose
+ARG openssh_client_version="1:8.4p1-5+deb11u1"
+# no-renovate: datasource=repology depName=debian_11/docker-ce-cli versioning=loose
+ARG docker_ce_cli_version="5:23.0.3-1~debian.11~bullseye"
 
 # hadolint ignore=SC2181, DL3008
 RUN \
@@ -37,21 +51,21 @@ RUN \
     && apt-get install -y --no-install-recommends \
         ack=3.4.0-1 \
         libarchive-tools=3.4.3-2+deb11u1 \
-        build-essential=12.9 \
+        build-essential="${build_essential_version}" \
         colordiff=1.0.18-1.1 \
         git=1:2.30.2-1+deb11u2 \
         iputils-ping=3:20210202-1 \
-        locales=2.31-13+deb11u5 \
+        locales="${locales_version}" \
         mariadb-client=1:10.5.18-0+deb11u1 \
         mosquitto-clients=2.0.11-1 \
         net-tools=1.60+git20181103.0eebece-1 \
         nmap=7.91+dfsg1+really7.80+dfsg1-2 \
-        openssh-client=1:8.4p1-5+deb11u1 \
+        openssh-client="${openssh_client_version}" \
         openssl=1.1.1n-0+deb11u4 \
         python3-dev=3.9.2-3 \
         python3=3.9.2-3 \
         unzip=6.0-26+deb11u1 \
-        uuid-runtime=2.36.1-8+deb11u1 \
+        uuid-runtime="${uuid_runtime_version}" \
         wget=1.21-1+deb11u1 \
         zip=3.0-12 \
         zsh=5.8-6+deb11u1 \
@@ -59,11 +73,11 @@ RUN \
         nano=5.4-2+deb11u2 \
         apt-transport-https=2.2.4 \
         ca-certificates=20210119 \
-        gnupg=2.2.27-2+deb11u2 \
+        gnupg="${gnupg_version}" \
         unzip=6.0-26+deb11u1 \
         cron=3.0pl1-137 \
         lsb-release=11.1.0 \
-        openssh-server=1:8.4p1-5+deb11u1 \
+        openssh-server="${openssh_server_version}" \
         git-crypt=0.6.0-1 \
         php=2:7.4+76 \
         php-curl=2:7.4+76 \
@@ -160,7 +174,7 @@ RUN \
     $(lsb_release -cs) stable" | tee /etc/apt/sources.list.d/docker.list > /dev/null \
     && apt-get update &> /dev/null \
     && apt-get install -y --no-install-recommends \
-    docker-ce-cli=5:23.0.3-1~debian.11~bullseye \
+    docker-ce-cli="${docker_ce_cli_version}" \
     &> /dev/null \
     && mv /usr/bin/docker /usr/local/bin/.undocked \
     \

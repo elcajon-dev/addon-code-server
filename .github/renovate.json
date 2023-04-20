@@ -24,7 +24,14 @@
       ],
       "versioningTemplate": "deb",
       "datasourceTemplate": "repology",
-      "depNameTemplate": "debian_11/{{{replace 'openssh-client' 'openssh' package}}}"
+      "depNameTemplate": "debian_11/{{package}}"
+    },
+    {
+      "fileMatch": ["/Dockerfile$"],
+      "matchStrings": [
+        "#\\s*renovate:\\s*datasource=(?<datasource>.*?) depName=(?<depName>.*?)( versioning=(?<versioning>.*?))?\\sENV .*?_VERSION=\"(?<currentValue>.*)\"\\s"
+      ],
+      "versioningTemplate": "{{#if versioning}}{{{versioning}}}{{else}}semver{{/if}}"
     },
     {
       "fileMatch": ["/Dockerfile$"],
