@@ -29,19 +29,19 @@ ARG CADDY_VERSION="v2.6.4"
 ARG TAILSCALE_VERSION="v1.42.0"
 ARG CLOUFLARED_VERSION="2023.5.1"
 ARG YQ_VERSION="v4.34.1"
-# renovate: datasource=repology depName=debian_11/build-essential-mipsen versioning=loose
+# renovate: datasource=repology depName=debian_12/build-essential-mipsen versioning=loose
 ARG build_essential_version="12.9"
-# renovate: datasource=repology depName=debian_11/locales versioning=loose
+# renovate: datasource=repology depName=debian_12/locales versioning=loose
 ARG locales_version="2.31-13+deb11u5"
-# no-renovate: datasource=repology depName=debian_11/uuid-runtime versioning=loose
+# no-renovate: datasource=repology depName=debian_12/uuid-runtime versioning=loose
 ARG uuid_runtime_version="2.36.1-8+deb11u1"
-# renovate: datasource=repology depName=debian_11/gnupg versioning=loose
-ARG gnupg_version="2.2.27-2+deb11u2"
-# renovate: datasource=repology depName=debian_11/openssh versioning=loose
-ARG openssh_server_version="1:8.4p1-5+deb11u1"
-# renovate: datasource=repology depName=debian_11/openssh versioning=loose
+# renovate: datasource=repology depName=debian_12/gnupg versioning=loose
+ARG gnupg_version="2.2.40-1.1"
+# renovate: datasource=repology depName=debian_12/openssh versioning=loose
+ARG openssh_server_version="1:9.2p1-2"
+# renovate: datasource=repology depName=debian_12/openssh versioning=loose
 ARG openssh_client_version="1:8.4p1-5+deb11u1"
-# no-renovate: datasource=repology depName=debian_11/docker-ce-cli versioning=loose
+# no-renovate: datasource=repology depName=debian_12/docker-ce-cli versioning=loose
 ARG docker_ce_cli_version="5:23.0.3-1~debian.11~bullseye"
 
 # hadolint ignore=SC2181, DL3008
@@ -64,7 +64,7 @@ RUN \
         openssl=1.1.1n-0+deb11u5 \
         python3-dev=3.9.2-3 \
         python3=3.9.2-3 \
-        unzip=6.0-26+deb11u1 \
+        unzip=6.0-28 \
         uuid-runtime="${uuid_runtime_version}" \
         wget=1.21-1+deb11u1 \
         zip=3.0-12 \
@@ -75,14 +75,14 @@ RUN \
         ca-certificates=20210119 \
         gnupg="${gnupg_version}" \
         unzip=6.0-26+deb11u1 \
-        cron=3.0pl1-137 \
-        lsb-release=11.1.0 \
+        cron=3.0pl1-162 \
+        lsb-release=12.0-1 \
         openssh-server="${openssh_server_version}" \
-        git-crypt=0.6.0-1 \
-        php=2:7.4+76 \
-        php-curl=2:7.4+76 \
-        netcat=1.10-46 \
-        htop=3.0.5-7 \
+        git-crypt=0.7.0-0.1 \
+        php=2:8.2+93 \
+        php-curl=2:8.2+93 \
+        netcat=1.219-1 \
+        htop=3.2.2-2 \
     \
     && sed -i -e 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen \
     && locale-gen \
