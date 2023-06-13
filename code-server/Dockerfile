@@ -66,7 +66,7 @@ RUN \
         python3=3.11.2-1+b1 \
         unzip=6.0-28 \
         uuid-runtime="${uuid_runtime_version}" \
-        wget=1.21.3-1+b2 \
+        wget=1.21.3-1+b1 \
         zip=3.0-13 \
         zsh=5.9-4+b2 \
         less=590-2 \
