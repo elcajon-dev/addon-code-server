@@ -46,6 +46,8 @@ ARG docker_ce_cli_version="5:23.0.3-1~debian.11~bullseye"
 
 # hadolint ignore=SC2181, DL3008
 RUN \
+    if [[ "${BUILD_ARCH}" = "aarch64" ]]; then wget_version="1.21.3-1+b1"; fi \
+    && if [[ "${BUILD_ARCH}" = "amd64" ]]; then wget_version="1.21.3-1+b2"; fi \
     apt-get update \
     \
     && apt-get install -y --no-install-recommends \
@@ -66,7 +68,7 @@ RUN \
         python3=3.11.2-1+b1 \
         unzip=6.0-28 \
         uuid-runtime="${uuid_runtime_version}" \
-        wget=1.21.3-1+b1 \
+        wget="${wget_version}" \
         zip=3.0-13 \
         zsh=5.9-4+b2 \
         less=590-2 \
