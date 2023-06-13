@@ -32,7 +32,7 @@ ARG YQ_VERSION="v4.34.1"
 # renovate: datasource=repology depName=debian_12/build-essential-mipsen versioning=loose
 ARG build_essential_version="12.9"
 # renovate: datasource=repology depName=debian_12/locales versioning=loose
-ARG locales_version="2.31-13+deb11u5"
+ARG locales_version="2.36-9"
 # no-renovate: datasource=repology depName=debian_12/uuid-runtime versioning=loose
 ARG uuid_runtime_version="2.38.1-5+b1"
 # renovate: datasource=repology depName=debian_12/gnupg versioning=loose
@@ -40,7 +40,7 @@ ARG gnupg_version="2.2.40-1.1"
 # renovate: datasource=repology depName=debian_12/openssh versioning=loose
 ARG openssh_server_version="1:9.2p1-2"
 # renovate: datasource=repology depName=debian_12/openssh versioning=loose
-ARG openssh_client_version="1:8.4p1-5+deb11u1"
+ARG openssh_client_version="1:9.2p1-2"
 # no-renovate: datasource=repology depName=debian_12/docker-ce-cli versioning=loose
 ARG docker_ce_cli_version="5:23.0.3-1~debian.11~bullseye"
 
@@ -49,21 +49,21 @@ RUN \
     apt-get update \
     \
     && apt-get install -y --no-install-recommends \
-        ack=3.4.0-1 \
-        libarchive-tools=3.4.3-2+deb11u1 \
+        ack=3.6.0-1 \
+        libarchive-tools=3.6.2-1 \
         build-essential="${build_essential_version}" \
-        colordiff=1.0.18-1.1 \
-        git=1:2.30.2-1+deb11u2 \
-        iputils-ping=3:20210202-1 \
+        colordiff=1.0.20-1 \
+        git=1:2.39.2-1.1 \
+        iputils-ping=3:20221126-1 \
         locales="${locales_version}" \
-        mariadb-client=1:10.5.19-0+deb11u2 \
-        mosquitto-clients=2.0.11-1 \
-        net-tools=1.60+git20181103.0eebece-1 \
-        nmap=7.91+dfsg1+really7.80+dfsg1-2 \
+        mariadb-client=1:10.11.3-1 \
+        mosquitto-clients=2.0.11-1.2 \
+        net-tools=2.10-0.1 \
+        nmap=7.93+dfsg1-1 \
         openssh-client="${openssh_client_version}" \
-        openssl=1.1.1n-0+deb11u5 \
-        python3-dev=3.9.2-3 \
-        python3=3.9.2-3 \
+        openssl=3.0.9-1 \
+        python3-dev=3.11.2-1+b1 \
+        python3=3.11.2-1+b1 \
         unzip=6.0-28 \
         uuid-runtime="${uuid_runtime_version}" \
         wget=1.21.3-1+b2 \
