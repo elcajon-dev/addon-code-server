@@ -72,7 +72,6 @@ RUN \
         less=590-2 \
         nano=7.2-1 \
         apt-transport-https=2.6.1 \
-        ca-certificates=20230311 \
         gnupg="${gnupg_version}" \
         cron=3.0pl1-162 \
         lsb-release=12.0-1 \
