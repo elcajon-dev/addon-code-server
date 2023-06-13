@@ -48,7 +48,7 @@ ARG docker_ce_cli_version="5:23.0.3-1~debian.11~bullseye"
 RUN \
     if [[ "${BUILD_ARCH}" = "aarch64" ]]; then wget_version="1.21.3-1+b1"; fi \
     && if [[ "${BUILD_ARCH}" = "amd64" ]]; then wget_version="1.21.3-1+b2"; fi \
-    apt-get update \
+    && apt-get update \
     \
     && apt-get install -y --no-install-recommends \
         ack=3.6.0-1 \
