@@ -34,7 +34,7 @@ ARG build_essential_version="12.9"
 # renovate: datasource=repology depName=debian_12/locales versioning=loose
 ARG locales_version="2.31-13+deb11u5"
 # no-renovate: datasource=repology depName=debian_12/uuid-runtime versioning=loose
-ARG uuid_runtime_version="2.36.1-8+deb11u1"
+ARG uuid_runtime_version="2.38.1-5+b1"
 # renovate: datasource=repology depName=debian_12/gnupg versioning=loose
 ARG gnupg_version="2.2.40-1.1"
 # renovate: datasource=repology depName=debian_12/openssh versioning=loose
@@ -66,22 +66,21 @@ RUN \
         python3=3.9.2-3 \
         unzip=6.0-28 \
         uuid-runtime="${uuid_runtime_version}" \
-        wget=1.21-1+deb11u1 \
-        zip=3.0-12 \
-        zsh=5.8-6+deb11u1 \
-        less=551-2 \
-        nano=5.4-2+deb11u2 \
-        apt-transport-https=2.2.4 \
-        ca-certificates=20210119 \
+        wget=1.21.3-1+b2 \
+        zip=3.0-13 \
+        zsh=5.9-4+b2 \
+        less=590-2 \
+        nano=7.2-1 \
+        apt-transport-https=2.6.1 \
+        ca-certificates=20230311 \
         gnupg="${gnupg_version}" \
-        unzip=6.0-26+deb11u1 \
         cron=3.0pl1-162 \
         lsb-release=12.0-1 \
         openssh-server="${openssh_server_version}" \
         git-crypt=0.7.0-0.1 \
         php=2:8.2+93 \
         php-curl=2:8.2+93 \
-        netcat=1.219-1 \
+        netcat-openbsd=1.219-1 \
         htop=3.2.2-2 \
     \
     && sed -i -e 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen \
