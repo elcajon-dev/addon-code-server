@@ -42,7 +42,7 @@ ARG openssh_server_version="1:9.2p1-2"
 # renovate: datasource=repology depName=debian_12/openssh versioning=loose
 ARG openssh_client_version="1:9.2p1-2"
 # no-renovate: datasource=repology depName=debian_12/docker-ce-cli versioning=loose
-ARG docker_ce_cli_version="5:23.0.3-1~debian.11~bullseye"
+ARG docker_ce_cli_version="5:24.0.2-1~debian.12~bookworm"
 
 # hadolint ignore=SC2181, DL3008
 RUN \
@@ -163,25 +163,21 @@ RUN \
         | tar zxvf - -C /opt/ --strip-components 1 \
     && ln -s /opt/tailscale /usr/local/bin/ \
     && ln -s /opt/tailscaled /usr/local/bin/ \
-    && echo "Installed Tailscale" \
     \
     && curl -J -L -s -o /usr/bin/cloudflared "https://github.com/cloudflare/cloudflared/releases/download/${CLOUFLARED_VERSION}/cloudflared-linux-${ARCH}" \
     && chmod +x /usr/bin/cloudflared \
-    && echo "Installed Cloudflared" \
     \
     && curl -J -L -s -o /usr/bin/yq "https://github.com/mikefarah/yq/releases/download/${YQ_VERSION}/yq_linux_${ARCH}" \
     && chmod +x /usr/bin/yq \
-    && echo "Installed yq" \
     \
     && curl -fsSL https://download.docker.com/linux/ubuntu/gpg | gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg &> /dev/null \
-    && echo "Added Docker keyring" \
     && echo \
     "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/debian \
-    $(lsb_release -cs) stable" | tee /etc/apt/sources.list.d/docker.list > /dev/null \
-    && apt-get update &> /dev/null \
+    $(lsb_release -cs) stable" | tee /etc/apt/sources.list.d/docker.list \
+    && apt-get update \
     && apt-get install -y --no-install-recommends \
     docker-ce-cli="${docker_ce_cli_version}" \
-    &> /dev/null \
+    \
     && mv /usr/bin/docker /usr/local/bin/.undocked \
     \
     && apt-get purge -y --auto-remove \
