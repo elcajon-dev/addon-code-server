@@ -181,7 +181,6 @@ RUN \
     && mv /usr/bin/docker /usr/local/bin/.undocked \
     \
     && apt-get purge -y --auto-remove \
-        bsdtar \
         build-essential \
         python3-dev \
         uuid-runtime \
