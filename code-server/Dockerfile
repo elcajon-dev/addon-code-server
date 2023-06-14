@@ -87,7 +87,9 @@ RUN \
     && sed -i -e 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen \
     && locale-gen \
     \
-    && curl https://bootstrap.pypa.io/get-pip.py | python3 --break-system-packages \
+    && rm /usr/lib/python3.11/EXTERNALLY-MANAGED \
+    \
+    && curl https://bootstrap.pypa.io/get-pip.py | python3 \
     \
     && if [[ "${BUILD_ARCH}" = "aarch64" ]]; then ARCH="arm64"; fi \
     && if [[ "${BUILD_ARCH}" = "amd64" ]]; then ARCH="amd64"; fi \
