@@ -8,6 +8,7 @@ ENV \
     LANG=en_US.UTF-8 \
     LANGUAGE=en_US:en \
     LC_ALL=en_US.UTF-8 \
+    PIP_BREAK_SYSTEM_PACKAGES=1 \
     S6_VERBOSITY="1"
 
 # Set shell
@@ -86,8 +87,6 @@ RUN \
     \
     && sed -i -e 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen \
     && locale-gen \
-    \
-    && rm /usr/lib/python3.11/EXTERNALLY-MANAGED \
     \
     && curl https://bootstrap.pypa.io/get-pip.py | python3 \
     \
@@ -182,6 +181,7 @@ RUN \
     \
     && apt-get purge -y --auto-remove \
         build-essential \
+        libarchive-tools \
         python3-dev \
         uuid-runtime \
     \
