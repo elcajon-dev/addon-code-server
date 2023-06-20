@@ -12,8 +12,7 @@ on:
   workflow_dispatch:
 
 concurrency:
-  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
-  cancel-in-progress: true
+  group: queue
 
 jobs:
   information:
@@ -118,11 +117,16 @@ jobs:
         with:
           ref: ${{ github.head_ref }}
           persist-credentials: false
+      - name: 🔐 Load 1Password secrets
+        uses: 1password/load-secrets-action@v1.2.0
+        env:
+          OP_SERVICE_ACCOUNT_TOKEN: ${{ secrets.OP_SERVICE_ACCOUNT_TOKEN }}
+          UPDATER_TOKEN: "op://CI/Github Token/Anmeldedaten"
       - name: 🚀 Run Prettier
         uses: creyD/prettier_action@v4.3
         with:
           prettier_options: --write **/*.{json,js,md,yaml}
-          GITHUB_TOKEN: ${{ secrets.UPDATER_TOKEN }}
+          GITHUB_TOKEN: ${{ env.UPDATER_TOKEN }}
 
   build:
     name: Build ${{ matrix.architecture }}
@@ -177,7 +181,6 @@ jobs:
       - name: 🚀 Build
         uses: docker/build-push-action@v4.1.1
         with:
-          load: true
           push: false
           context: ${{ needs.information.outputs.target }}
           file: ${{ needs.information.outputs.target }}/Dockerfile
