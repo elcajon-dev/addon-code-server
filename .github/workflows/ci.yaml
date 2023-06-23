@@ -12,7 +12,8 @@ on:
   workflow_dispatch:
 
 concurrency:
-  group: queue
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
 
 jobs:
   information:
