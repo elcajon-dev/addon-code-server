@@ -141,7 +141,7 @@ jobs:
             BUILD_VERSION=${{ needs.information.outputs.version }}
       # yamllint disable rule:line-length
       - name: 🔐 Load 1Password CAS secret
-        uses: 1password/load-secrets-action@v1.3.0
+        uses: 1password/load-secrets-action@v1.3.1
         env:
           OP_SERVICE_ACCOUNT_TOKEN: ${{ secrets.OP_SERVICE_ACCOUNT_TOKEN }}
           CAS_API_KEY: "op://CI/CAS Codenotary/Anmeldedaten"
@@ -170,7 +170,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: 🔐 Load 1Password Github App secret
-        uses: 1password/load-secrets-action@v1.3.0
+        uses: 1password/load-secrets-action@v1.3.1
         env:
           OP_SERVICE_ACCOUNT_TOKEN: ${{ secrets.OP_SERVICE_ACCOUNT_TOKEN }}
           APP_ID: "op://CI/Github App/Benutzername"
@@ -205,7 +205,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: 🔐 Load 1Password Github App secret
-        uses: 1password/load-secrets-action@v1.3.0
+        uses: 1password/load-secrets-action@v1.3.1
         env:
           OP_SERVICE_ACCOUNT_TOKEN: ${{ secrets.OP_SERVICE_ACCOUNT_TOKEN }}
           APP_ID: "op://CI/Github App/Benutzername"
