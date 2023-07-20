@@ -5,10 +5,10 @@ keesschollaart.vscode-home-assistant#1.37.0
 lukas-tr.materialdesignicons-intellisense#4.1.0
 netcorext.uuid-generator#0.0.5
 oderwat.indent-rainbow#8.3.1
-redhat.vscode-yaml#1.11.10112022
-usernamehw.errorlens#3.9.0
+redhat.vscode-yaml#1.14.0
+usernamehw.errorlens#3.12.0
 ms-azuretools.vscode-docker#1.26.0
 pkief.material-icon-theme#4.29.0
 github.github-vscode-theme#6.3.4
 DavidAnson.vscode-markdownlint#0.51.0
-GitHub.vscode-github-actions#0.25.2
+GitHub.vscode-github-actions#0.25.8
