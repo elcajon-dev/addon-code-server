@@ -33,7 +33,7 @@ ARG YQ_VERSION="v4.34.2"
 # renovate: datasource=repology depName=debian_12/build-essential-mipsen versioning=loose
 ARG build_essential_version="12.9"
 # renovate: datasource=repology depName=debian_12/locales versioning=loose
-ARG locales_version="2.36-9"
+ARG locales_version="2.36-9+deb12u1"
 # no-renovate: datasource=repology depName=debian_12/uuid-runtime versioning=loose
 ARG uuid_runtime_version="2.38.1-5+b1"
 # renovate: datasource=repology depName=debian_12/gnupg versioning=loose
