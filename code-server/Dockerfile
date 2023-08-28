@@ -45,7 +45,7 @@ ARG openssh_client_version="1:9.2p1-2"
 # no-renovate: datasource=repology depName=debian_12/docker-ce-cli versioning=loose
 ARG docker_ce_cli_version="5:24.0.2-1~debian.12~bookworm"
 # renovate: datasource=repology depName=aur/1password-cli versioning=loose
-ARG 1password_cli_version="2.20.0-1"
+ARG opassword_cli_version="2.20.0-1"
 
 # hadolint ignore=SC2181, DL3008
 RUN \
@@ -187,7 +187,7 @@ RUN \
         tee /etc/apt/sources.list.d/1password.list \
     && apt-get update \
     && apt-get install -y --no-install-recommends \
-        1password-cli="${1password_cli_version}" \
+        1password-cli="${opassword_cli_version}" \
     \
     && apt-get purge -y --auto-remove \
         build-essential \
