@@ -8,4 +8,4 @@ configuration:
     name: Init Script Pfad
     description: >-
       Pfad für die benutzerspezifischen s6-rc Skripte.
-      Funktion ist deaktiviert falls Wert leer ist.
+      Funktion ist deaktiviert falls Parameter leer ist.
