@@ -6,14 +6,11 @@
 
 # Check if custom config shall be used
 if ! bashio::config.exists init_path; then
-
-  custom_service_path="/tmp/code-server/s6-overlay"
-
-else
-
-  # Get user configured path for service files
-  custom_service_path="$(bashio::config init_path | sed 's/\/$//')/code-server/s6-overlay"
+  bashio::exit.ok
 fi
+
+# Get user configured path for service files
+custom_service_path="$(bashio::config init_path | sed 's/\/$//')/code-server/s6-overlay"
 
 # Check for needed directories and copy templates if necessary
 if ! bashio::fs.directory_exists "${custom_service_path}" ; then
