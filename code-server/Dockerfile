@@ -60,7 +60,7 @@ RUN \
         iputils-ping=3:20221126-1 \
         locales="${locales_version}" \
         mariadb-client=1:10.11.3-1 \
-        mosquitto-clients=2.0.11-1.2 \
+        mosquitto-clients=2.0.11-1.2+deb12u1 \
         net-tools=2.10-0.1 \
         nmap=7.93+dfsg1-1 \
         openssh-client="${openssh_client_version}" \
