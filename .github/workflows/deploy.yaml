@@ -136,11 +136,6 @@ jobs:
             BUILD_REPOSITORY=${{ github.repository }}
             BUILD_VERSION=${{ needs.information.outputs.version }}
       # yamllint disable rule:line-length
-      - name: 🔐 Load 1Password CAS secret
-        uses: 1password/load-secrets-action@v1.3.1
-        env:
-          OP_SERVICE_ACCOUNT_TOKEN: ${{ secrets.OP_SERVICE_ACCOUNT_TOKEN }}
-          CAS_API_KEY: "op://CI/CAS Codenotary/Anmeldedaten"
       # https://github.com/docker/build-push-action/issues/252
       # https://github.com/moby/buildkit/issues/1896
       - name: 🚚 Swap build cache
