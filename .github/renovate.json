@@ -184,12 +184,6 @@
       "matchStrings": ["GitHub\\.vscode-github-actions#(?<currentValue>.+)\\s"],
       "datasourceTemplate": "github-releases",
       "depNameTemplate": "github/vscode-github-actions"
-    },
-    {
-      "fileMatch": ["code-server/code-server.extensions$"],
-      "matchStrings": ["tailscale\\.vscode-tailscale#(?<currentValue>.+)\\s"],
-      "datasourceTemplate": "github-releases",
-      "depNameTemplate": "tailscale-dev/vscode-tailscale"
     }
   ],
   "packageRules": [
