@@ -4,8 +4,3 @@ configuration:
     name: Log Level
     description: >-
       Defines the log level for add-on and Code Server service.
-  init_path:
-    name: Init script path
-    description: >-
-      Defines the path for custom s6-rc scripts.
-      Deactivated if config option is empty.

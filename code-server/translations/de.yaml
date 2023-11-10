@@ -4,8 +4,3 @@ configuration:
     name: Log Level
     description: >-
       Bestimmt das Log Level für das Add-on und den Code Server service.
-  init_path:
-    name: Init Script Pfad
-    description: >-
-      Pfad für die benutzerspezifischen s6-rc Skripte.
-      Funktion ist deaktiviert falls Parameter leer ist.

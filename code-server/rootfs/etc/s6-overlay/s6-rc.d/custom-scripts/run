@@ -9,15 +9,9 @@ if ! bashio::config.exists init_path; then
   bashio::exit.ok
 fi
 
-# Get user configured path for service files
-custom_service_path="$(bashio::config init_path | sed 's/\/$//')/code-server/s6-overlay"
-
 # Check for needed directories and copy templates if necessary
-if ! bashio::fs.directory_exists "${custom_service_path}" ; then
-    mkdir -p "${custom_service_path}"
-fi
-if ! bashio::fs.directory_exists "${custom_service_path}/custom-services" ; then
-    cp -rf /etc/s6-overlay/s6-rc.d/user2 "${custom_service_path}"/custom-services
+if ! bashio::fs.directory_exists "/config/custom-services" ; then
+    cp -rf /etc/s6-overlay/s6-rc.d/user2 /config/custom-services
 fi
 
 # Timestamp for dynamic s6 db creation
@@ -32,7 +26,7 @@ s6-rc-compile -b \
     \
     /etc/s6-overlay/s6-rc.d \
     /package/admin/s6-overlay/etc/s6-rc/sources \
-    "${custom_service_path}"
+    /config/custom-services
 
 # Change live db to newly created database
 s6-rc-update -b "/run/s6/db-${stamp}"

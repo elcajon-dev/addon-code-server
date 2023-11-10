@@ -26,22 +26,11 @@ using [this GitHub repository][ha-addons] or by clicking the button below.
 - Tailscale (Zero config VPN. Installs on any device in minutes.)
 - Cloudflared (Cloudflare Tunnel provides you with a secure way to connect your
   resources to Cloudflare without a publicly routable IP address.)
-- Custom Init scripts and services (see next chapter)
+- Custom Init scripts and services (see chapter below)
 
 ## Configuration
 
 **Note**: _Remember to restart the add-on when the configuration is changed._
-
-### Option: `init_path`
-
-The `init_path` option allows to set the path containing the custom
-init scripts and services. For exmpale `/share` will use directories:
-`/share/code-server/s6-overlay`.
-
-If this option isn't set, this function is disabled.
-
-**Note**: _Please be aware that this is a really powerful function which can damage
-your whole system if handled incorrectly._
 
 ### Option: `log_level`
 
@@ -63,8 +52,8 @@ you are troubleshooting.
 
 ## Custom Init scripts
 
-When `init_path` configuration option is set. The add-on will generate
-the relevant folders where you can place your s6-rc v3 scripts.
+The add-on will generate the relevant folders where you can place your s6-rc v3 scripts.
+`/config/custom-services`
 
 Check the s6 manual for more information on how to write s6-rc scripts.
 
