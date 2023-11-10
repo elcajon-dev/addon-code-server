@@ -19,6 +19,7 @@ hassio_api: true
 hassio_role: manager
 homeassistant_api: true
 map:
+  - addon_config:rw
   - addons:rw
   - all_addon_configs:rw
   - backup:rw
