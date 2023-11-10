@@ -32,4 +32,3 @@ services:
   - mqtt:want
 schema:
   log_level: list(trace|debug|info|notice|warning|error|fatal)?
-  init_path: str?

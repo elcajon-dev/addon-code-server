@@ -3,7 +3,7 @@
 # Home Assistant Add-on: Code Server
 # Persists user settings and installs custom user packages.
 # ==============================================================================
-readonly -a DIRECTORIES=(addon_configs addons backup homeassistant media share ssl)
+readonly -a DIRECTORIES=(addon_configs addons backup config homeassistant media share ssl)
 readonly GIT_USER_PATH=/data/git
 readonly SSH_USER_PATH=/data/.ssh
 readonly ZSH_HISTORY_FILE=/root/.zsh_history
@@ -14,10 +14,6 @@ for dir in "${DIRECTORIES[@]}"; do
     ln -s "/${dir}" "${HOME}/${dir}" \
         || bashio::log.warning "Failed linking common directory: ${dir}"
 done
-
-# Create and link persistent workspace folder
-mkdir -p /data/workspace
-ln -s /data/workspace "${HOME}/workspace"
 
 # Store SSH settings in add-on data folder
 if ! bashio::fs.directory_exists "${SSH_USER_PATH}"; then
