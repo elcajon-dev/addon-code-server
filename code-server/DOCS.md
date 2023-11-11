@@ -53,7 +53,7 @@ you are troubleshooting.
 ## Custom Init scripts
 
 The add-on will generate the relevant folders where you can place your s6-rc v3 scripts.
-`/config/custom-services`
+`/addon_config/custom-services`
 
 Check the s6 manual for more information on how to write s6-rc scripts.
 
