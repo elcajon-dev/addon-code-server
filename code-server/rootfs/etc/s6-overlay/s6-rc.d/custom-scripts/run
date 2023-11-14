@@ -5,7 +5,7 @@
 # ==============================================================================
 
 # Disable scripts if log level set to debug
- if bashio::debug ; then
+if bashio::debug ; then
         bashio::log.debug "Disabling custom scripts"
         bashio::exit.ok
 fi
