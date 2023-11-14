@@ -60,6 +60,9 @@ Check the s6 manual for more information on how to write s6-rc scripts.
 **Note**: _Please be aware that this is a really powerful function which can damage
 your whole system if handled incorrectly._
 
+**Note**: \_If your custom scripts prevent the add-on from starting set `log_level`
+to `debug` to temporarily disable your init scripts from running.
+
 ## Resetting your Code Server settings to the add-on defaults
 
 The add-on updates your settings to be optimized for use with Home Assistant.
