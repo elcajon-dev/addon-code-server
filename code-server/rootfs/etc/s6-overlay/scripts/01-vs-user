@@ -3,7 +3,7 @@
 # Home Assistant Add-on: Code Server
 # Persists user settings and installs custom user packages.
 # ==============================================================================
-readonly -a DIRECTORIES=(addon_config addon_configs addons backup config media share ssl)
+readonly -a DIRECTORIES=(config addon_configs addons backup homeassistant media share ssl)
 readonly GIT_USER_PATH=/data/git
 readonly SSH_USER_PATH=/data/.ssh
 readonly ZSH_HISTORY_FILE=/root/.zsh_history
