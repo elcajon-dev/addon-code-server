@@ -6,8 +6,8 @@
 
 # Disable scripts if log level set to debug
 if bashio::debug ; then
-        bashio::log.debug "Disabling custom scripts"
-        bashio::exit.ok
+    bashio::log.debug "Disabling custom scripts"
+    bashio::exit.ok
 fi
 
 # Check for needed directories and copy templates if necessary
