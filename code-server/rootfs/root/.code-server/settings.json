@@ -105,12 +105,26 @@
   "yaml.format.enable": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.rulers": [80, 88, 100, 120],
-  "workbench.colorTheme": "GitHub Light Default",
+  "workbench.colorTheme": "GitHub Dark",
   "workbench.startupEditor": "none",
   "git.confirmSync": false,
   "git.autofetch": true,
   "editor.formatOnSave": true,
   "git.enableSmartCommit": true,
   "redhat.telemetry.enabled": false,
-  "git.ignoredRepositories": ["/root/.oh-my-zsh"]
+  "git.ignoredRepositories": ["/root/.oh-my-zsh"],
+  "material-icon-theme.folders.associations": {
+    "addon_configs": "config",
+    "homeassistant": "robot",
+    ".storage": "admin",
+    "blueprints": "template",
+    "custom_components": "dist",
+    "customizations": "include",
+    "media": "audio",
+    "share": "shared"
+  },
+  "material-icon-theme.files.associations": {
+    "*.log.1": "log",
+    "*.log.fault": "log"
+  }
 }
