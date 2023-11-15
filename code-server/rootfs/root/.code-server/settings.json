@@ -116,15 +116,15 @@
   "material-icon-theme.folders.associations": {
     "addon_configs": "config",
     "homeassistant": "robot",
-    ".storage" : "admin",
-    "blueprints" : "template",
-    "custom_components" : "dist",
-    "customizations" : "include",
-    "media" : "audio",
-    "share" : "shared"
+    ".storage": "admin",
+    "blueprints": "template",
+    "custom_components": "dist",
+    "customizations": "include",
+    "media": "audio",
+    "share": "shared"
   },
   "material-icon-theme.files.associations": {
     "*.log.1": "log",
-    "*.log.fault" : "log"
+    "*.log.fault": "log"
   }
 }
