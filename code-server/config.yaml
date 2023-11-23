@@ -16,7 +16,7 @@ arch:
 uart: true
 docker_api: true
 hassio_api: true
-hassio_role: manager
+hassio_role: admin
 homeassistant_api: true
 map:
   - addon_config:rw
