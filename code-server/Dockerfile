@@ -84,6 +84,7 @@ RUN \
         php-curl=2:8.2+93 \
         netcat-openbsd=1.219-1 \
         htop=3.2.2-2 \
+        shellcheck=0.9.0-1 \
     \
     && sed -i -e 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen \
     && locale-gen \
