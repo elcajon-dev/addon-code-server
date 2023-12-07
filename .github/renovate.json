@@ -178,12 +178,6 @@
       ],
       "datasourceTemplate": "github-tags",
       "depNameTemplate": "DavidAnson/vscode-markdownlint"
-    },
-    {
-      "fileMatch": ["code-server/code-server.extensions$"],
-      "matchStrings": ["GitHub\\.vscode-github-actions#(?<currentValue>.+)\\s"],
-      "datasourceTemplate": "github-releases",
-      "depNameTemplate": "github/vscode-github-actions"
     }
   ],
   "packageRules": [
