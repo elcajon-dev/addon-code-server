@@ -27,7 +27,7 @@ ARG HA_CLI_VERSION="4.29.0"
 ARG RCLONE_VERSION="v1.65.0"
 ARG CTOP_VERSION="v0.7.7"
 ARG CADDY_VERSION="v2.7.6"
-ARG TAILSCALE_VERSION="v1.54.1"
+ARG TAILSCALE_VERSION="v1.56.0"
 ARG CLOUFLARED_VERSION="2023.10.0"
 ARG YQ_VERSION="v4.40.5"
 # renovate: datasource=repology depName=debian_12/build-essential-mipsen versioning=loose
