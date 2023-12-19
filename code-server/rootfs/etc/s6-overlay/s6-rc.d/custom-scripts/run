@@ -12,7 +12,7 @@ fi
 
 # Check for needed directories and copy templates if necessary
 if ! bashio::fs.directory_exists "/config/custom-services" ; then
-    mkdir /config/custom-services/custom-services
+    mkdir -p /config/custom-services/custom-services
     cp -rf /etc/s6-overlay/s6-rc.d/user2 /config/custom-services/custom-services
 fi
 
