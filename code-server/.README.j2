@@ -1,7 +1,13 @@
 # Home Assistant Add-on: Advanced Code Server
 
-[![Release][release-shield]][release] ![Project Stage][project-stage-shield] ![Project Maintenance][maintenance-shield]
-
+[![Release][release-shield]][release]
+![Project Stage][project-stage-shield]
+![Project Maintenance][maintenance-shield]
+{% if channel == "stable" %}
+![Reported Installations][installations-shield-stable]
+{%- else -%}
+![Reported Installations][installations-shield-edge]
+{% endif %}
 Code Server experience integrated in the Home Assistant frontend.
 
 ## About
@@ -52,3 +58,6 @@ This repository was created for:
 [release-shield]: https://img.shields.io/badge/version-{{ version }}-blue.svg
 [release]: {{ repo }}/tree/{{ version }}
 [hassio-addons]: https://github.com/hassio-addons/addon-vscode
+[installations-shield-edge]: https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fanalytics.home-assistant.io%2Faddons.json&query=%24%5B%22079a70e5_code-server%22%5D.total&label=Reported%20Installations&link=https%3A%2F%2Fanalytics.home-assistant.io/add-ons
+[installations-shield-stable]: https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fanalytics.home-assistant.io%2Faddons.json&query=%24%5B%226258206e_code-server%22%5D.total&label=Reported%20Installations&link=https%3A%2F%2Fanalytics.home-assistant.io/add-ons
+
