@@ -62,7 +62,7 @@ with the following additional features:
 [github-actions-shield]: https://github.com/elcajon/addon-code-server/workflows/CI/badge.svg
 [github-actions]: https://github.com/elcajon/addon-code-server/actions
 [license-shield]: https://img.shields.io/github/license/elcajon/addon-code-server.svg
-[maintenance-shield]: https://img.shields.io/maintenance/yes/2023.svg
+[maintenance-shield]: https://img.shields.io/maintenance/yes/2024.svg
 [releases-shield]: https://img.shields.io/github/release/elcajon/addon-code-server.svg
 [releases]: https://github.com/elcajon/addon-code-server/releases
 [project-stage-shield]: https://img.shields.io/badge/project%20stage-production%20ready-brightgreen.svg
