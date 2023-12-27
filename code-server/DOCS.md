@@ -20,13 +20,14 @@ using [this GitHub repository][ha-addons] or by clicking the button below.
 
 ## Preinstalled tools
 
-- Ctop (CLI Interface to monitor and manage Docker)
-- RClone (Rclone has powerful cloud equivalents to the unix
-  commands rsync, cp, mv, mount, ls, ncdu, tree, rm, and cat.)
-- Tailscale (Zero config VPN. Installs on any device in minutes.)
-- Cloudflared (Cloudflare Tunnel provides you with a secure way to connect your
-  resources to Cloudflare without a publicly routable IP address.)
-- Custom Init scripts and services (see chapter below)
+- Host Docker access
+- Material Design icons pre-installed
+- Cron installed and configured
+- Tailscale installed
+- Cloudflared installed
+- Rclone installed
+- Appdaemon & hass-apps installed
+- Custom cont-init.d and services.d scripts (see chapter below)
 
 ## Configuration
 
@@ -53,15 +54,15 @@ you are troubleshooting.
 ## Custom Init scripts
 
 The add-on will generate the relevant folders where you can place your s6-rc v3 scripts.
-`/config/custom-services`
+`/addon_configs/xxxxxxxx_code-server/custom-services`
 
 Check the s6 manual for more information on how to write s6-rc scripts.
 
 **Note**: _Please be aware that this is a really powerful function which can damage
 your whole system if handled incorrectly._
 
-**Note**: \_If your custom scripts prevent the add-on from starting set `log_level`
-to `debug` to temporarily disable your init scripts from running.
+**Note**: _If your custom scripts prevent the add-on from starting set `log_level`
+to `debug` to temporarily disable your init scripts from running._
 
 ## Resetting your Code Server settings to the add-on defaults
 
