@@ -46,7 +46,7 @@ with the following additional features:
 - Material Design icons pre-installed
 - Cron installed and configured
 - Tailscale installed
-- Cloudflare installed
+- Cloudflared installed
 - Rclone installed
 - Appdaemon & hass-apps installed
 - Custom cont-init.d and services.d scripts
