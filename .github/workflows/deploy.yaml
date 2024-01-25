@@ -165,7 +165,7 @@ jobs:
           OP_SERVICE_ACCOUNT_TOKEN: ${{ secrets.OP_SERVICE_ACCOUNT_TOKEN }}
           UPDATER_TOKEN: "op://CI/Github Token/Anmeldedaten"
       - name: 🚀 Dispatch repository updater update signal
-        uses: peter-evans/repository-dispatch@v2
+        uses: peter-evans/repository-dispatch@v3
         with:
           token: ${{ env.UPDATER_TOKEN }}
           repository: ${{ github.repository_owner }}/repository-edge
@@ -193,7 +193,7 @@ jobs:
           OP_SERVICE_ACCOUNT_TOKEN: ${{ secrets.OP_SERVICE_ACCOUNT_TOKEN }}
           UPDATER_TOKEN: "op://CI/Github Token/Anmeldedaten"
       - name: 🚀 Dispatch repository updater update signal
-        uses: peter-evans/repository-dispatch@v2
+        uses: peter-evans/repository-dispatch@v3
         with:
           token: ${{ env.UPDATER_TOKEN }}
           repository: ${{ github.repository_owner }}/repository-stable
