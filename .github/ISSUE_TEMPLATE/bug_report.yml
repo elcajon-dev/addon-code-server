@@ -27,7 +27,7 @@ body:
       placeholder: 9.x.x
       description: >-
         Can be found in:
-        [Settings -> Add-Ons -> Code-Server](https://my.home-assistant.io/redirect/supervisor_addon/?addon=e2cf24b1_code-server).
+        [Settings -> Add-Ons -> Code-Server](https://my.home-assistant.io/redirect/supervisor_addon/?addon=a03729f7_code-server).
   - type: input
     attributes:
       label: What was the last working version of Code Server?
