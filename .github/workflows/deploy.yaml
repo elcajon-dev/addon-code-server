@@ -160,7 +160,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: 🔐 Load 1Password secrets
-        uses: 1password/load-secrets-action@v1.3.1
+        uses: 1password/load-secrets-action@v1.3.2
         env:
           OP_SERVICE_ACCOUNT_TOKEN: ${{ secrets.OP_SERVICE_ACCOUNT_TOKEN }}
           UPDATER_TOKEN: "op://CI/Github Token/Anmeldedaten"
@@ -188,7 +188,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: 🔐 Load 1Password secrets
-        uses: 1password/load-secrets-action@v1.3.1
+        uses: 1password/load-secrets-action@v1.3.2
         env:
           OP_SERVICE_ACCOUNT_TOKEN: ${{ secrets.OP_SERVICE_ACCOUNT_TOKEN }}
           UPDATER_TOKEN: "op://CI/Github Token/Anmeldedaten"
