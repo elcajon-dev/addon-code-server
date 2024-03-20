@@ -120,7 +120,7 @@ jobs:
           persist-credentials: false
       - name: 🔐 Load 1Password secrets
         id: token
-        uses: 1password/load-secrets-action@v1.3.2
+        uses: 1password/load-secrets-action@v2.0.0
         env:
           OP_SERVICE_ACCOUNT_TOKEN: ${{ secrets.OP_SERVICE_ACCOUNT_TOKEN }}
           UPDATER_TOKEN: "op://CI/Github Token/Anmeldedaten"
