@@ -126,5 +126,9 @@
   "material-icon-theme.files.associations": {
     "*.log.1": "log",
     "*.log.fault": "log"
-  }
+  },
+  "git.branchProtection": ["main"],
+  "git.scanRepositories": ["homeassistant", "addon_configs"],
+  "git.autoStash": true,
+  "git.mergeEditor": true
 }
