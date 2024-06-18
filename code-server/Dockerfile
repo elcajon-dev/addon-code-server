@@ -189,8 +189,8 @@ RUN \
         1password-cli \
     \
     && copilot_chat_version=$(grep 'GitHub.copilot-chat#' /etc/code-server.extensions | awk -F '#' '{print $2}') \
-    && jq '.engines.vscode = "^1.90.0"' /usr/local/lib/code-server/lib/vscode/GitHub.copilot-chat-${copilot_chat_version}/package.json > /tmp/tmp.json \
-    && mv /tmp/tmp.json /usr/local/lib/code-server/lib/vscode/GitHub.copilot-chat-${copilot_chat_version}/package.json \
+    && jq '.engines.vscode = "^1.90.0"' /usr/local/lib/code-server/lib/vscode/extensions/GitHub.copilot-chat-${copilot_chat_version}/package.json > /tmp/tmp.json \
+    && mv /tmp/tmp.json /usr/local/lib/code-server/lib/vscode/extensions/GitHub.copilot-chat-${copilot_chat_version}/package.json \
     \
     && apt-get purge -y --auto-remove \
         build-essential \
