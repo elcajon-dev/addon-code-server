@@ -188,6 +188,10 @@ RUN \
     && apt-get install -y --no-install-recommends \
         1password-cli \
     \
+    && copilot-chat-version=$(grep 'GitHub.copilot#' extensions.txt | awk -F '#' '{print $2}') \
+    && jq '.engines.vscode = "^1.90.0"' /usr/local/lib/code-server/lib/vscode/GitHub.copilot-chat-${copilot-chat-version}/package.json > /tmp/tmp.json \
+    && mv /tmp/tmp.json /usr/local/lib/code-server/lib/vscode/GitHub.copilot-chat-${copilot-chat-version}/package.json
+    \
     && apt-get purge -y --auto-remove \
         build-essential \
         libarchive-tools \
