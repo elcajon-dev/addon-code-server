@@ -44,9 +44,7 @@
     ".Trash-0/**": true,
     "**/__pycache__": true,
     "**/.bashrc": true,
-    "**/*.db-shm": true,
-    "**/*.db-wal": true,
-    "**/deps/**": true,
+    "**/.cache": true,
     "**/.code-server": true,
     "**/.config": true,
     "**/.DS_Store": true,
@@ -62,8 +60,11 @@
     "**/.zcompdump*": true,
     "**/.zsh*": true,
     "**/*.crswap": true,
+    "**/*.db-shm": true,
+    "**/*.db-wal": true,
     "**/CVS": true,
     "**/deps": true,
+    "**/deps/**": true,
     "**/Thumbs.db": true
   },
   "yaml.customTags": [
@@ -130,5 +131,11 @@
   "git.branchProtection": ["main"],
   "git.scanRepositories": ["homeassistant", "addon_configs"],
   "git.autoStash": true,
-  "git.mergeEditor": true
+  "git.mergeEditor": true,
+  "github.copilot.enable": {
+    "*": true,
+    "plaintext": true,
+    "markdown": false,
+    "scminput": false
+  }
 }
