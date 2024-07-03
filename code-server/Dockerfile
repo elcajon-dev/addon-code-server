@@ -33,9 +33,9 @@ ARG YQ_VERSION="v4.44.2"
 # renovate: datasource=repology depName=debian_12/build-essential-mipsen versioning=loose
 ARG build_essential_version="12.9"
 # renovate: datasource=repology depName=debian_12/locales versioning=loose
-ARG locales_version="2.36-9+deb12u4"
+ARG locales_version="2.36-9+deb12u7"
 # no-renovate: datasource=repology depName=debian_12/uuid-runtime versioning=loose
-ARG uuid_runtime_version="2.38.1-5+b1"
+ARG uuid_runtime_version="2.38.1-5+deb12u1"
 # renovate: datasource=repology depName=debian_12/gnupg versioning=loose
 ARG gnupg_version="2.2.40-1.1"
 # renovate: datasource=repology depName=debian_12/openssh versioning=loose
@@ -71,7 +71,7 @@ RUN \
         uuid-runtime="${uuid_runtime_version}" \
         wget="${wget_version}" \
         zip=3.0-13 \
-        zsh=5.9-4+b2 \
+        zsh=5.9-4+b5 \
         less=590-2.1~deb12u2 \
         nano=7.2-1+deb12u1 \
         apt-transport-https=2.6.1 \
