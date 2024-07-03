@@ -73,7 +73,7 @@ RUN \
         zip=3.0-13 \
         zsh=5.9-4+b2 \
         less=590-2.1~deb12u2 \
-        nano=7.2-1 \
+        nano=7.2-1+deb12u1 \
         apt-transport-https=2.6.1 \
         gnupg="${gnupg_version}" \
         cron=3.0pl1-162 \
