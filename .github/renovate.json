@@ -1,6 +1,9 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["workarounds:reduceRepologyServerLoad", "helpers:pinGitHubActionDigestsToSemver"],
+  "extends": [
+    "workarounds:reduceRepologyServerLoad",
+    "helpers:pinGitHubActionDigestsToSemver"
+  ],
   "rebaseWhen": "behind-base-branch",
   "dependencyDashboard": true,
   "dependencyDashboardAutoclose": false,
