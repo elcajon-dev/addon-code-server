@@ -188,6 +188,12 @@
       "matchStrings": ["mikoz\\.black-py#(?<currentValue>.+)\\s"],
       "datasourceTemplate": "github-tags",
       "depNameTemplate": "34j/vscode-black"
+    },
+    {
+      "fileMatch": ["code-server/code-server.extensions$"],
+      "matchStrings": ["GitHub\\.vscode-pull-request-github#(?<currentValue>.+)\\s"],
+      "datasourceTemplate": "github-tags",
+      "depNameTemplate": "microsoft/vscode-pull-request-github"
     }
   ],
   "packageRules": [
