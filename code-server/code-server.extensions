@@ -11,8 +11,8 @@ ms-azuretools.vscode-docker#1.29.2
 pkief.material-icon-theme#5.10.0
 github.github-vscode-theme#6.3.4
 DavidAnson.vscode-markdownlint#0.56.0
-GitHub.copilot#1.204.939
-GitHub.copilot-chat#0.17.2024061801
+GitHub.copilot#1.232.0
+GitHub.copilot-chat#0.21.2024092002
 mikoz.black-py#1.0.3
 github.vscode-pull-request-github#0.96.0
 ms-python.python#2024.14.0
