@@ -191,7 +191,9 @@
     },
     {
       "fileMatch": ["code-server/code-server.extensions$"],
-      "matchStrings": ["GitHub\\.vscode-pull-request-github#(?<currentValue>.+)\\s"],
+      "matchStrings": [
+        "GitHub\\.vscode-pull-request-github#(?<currentValue>.+)\\s"
+      ],
       "datasourceTemplate": "github-tags",
       "depNameTemplate": "microsoft/vscode-pull-request-github"
     }
