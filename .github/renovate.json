@@ -196,6 +196,22 @@
       ],
       "datasourceTemplate": "github-tags",
       "depNameTemplate": "microsoft/vscode-pull-request-github"
+    },
+    {
+      "fileMatch": ["code-server/code-server.extensions$"],
+      "matchStrings": [
+        "ms-python\\.python#(?:v)?(?<currentValue>.+?)\\s"
+      ],
+      "datasourceTemplate": "github-tags",
+      "depNameTemplate": "microsoft/vscode-python"
+    },
+    {
+      "fileMatch": ["code-server/code-server.extensions$"],
+      "matchStrings": [
+        "ms-python\\.debugpy#(?:v)?(?<currentValue>.+?)\\s"
+      ],
+      "datasourceTemplate": "github-tags",
+      "depNameTemplate": "microsoft/vscode-python-debugger"
     }
   ],
   "packageRules": [
