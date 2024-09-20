@@ -199,17 +199,13 @@
     },
     {
       "fileMatch": ["code-server/code-server.extensions$"],
-      "matchStrings": [
-        "ms-python\\.python#(?:v)?(?<currentValue>.+?)\\s"
-      ],
+      "matchStrings": ["ms-python\\.python#(?:v)?(?<currentValue>.+?)\\s"],
       "datasourceTemplate": "github-tags",
       "depNameTemplate": "microsoft/vscode-python"
     },
     {
       "fileMatch": ["code-server/code-server.extensions$"],
-      "matchStrings": [
-        "ms-python\\.debugpy#(?:v)?(?<currentValue>.+?)\\s"
-      ],
+      "matchStrings": ["ms-python\\.debugpy#(?:v)?(?<currentValue>.+?)\\s"],
       "datasourceTemplate": "github-tags",
       "depNameTemplate": "microsoft/vscode-python-debugger"
     }
