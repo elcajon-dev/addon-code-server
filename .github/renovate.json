@@ -182,6 +182,12 @@
       ],
       "datasourceTemplate": "github-tags",
       "depNameTemplate": "DavidAnson/vscode-markdownlint"
+    },
+    {
+      "fileMatch": ["code-server/code-server.extensions$"],
+      "matchStrings": ["mikoz\\.black-py#(?<currentValue>.+)\\s"],
+      "datasourceTemplate": "github-tags",
+      "depNameTemplate": "34j/vscode-black"
     }
   ],
   "packageRules": [
