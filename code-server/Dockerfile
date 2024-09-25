@@ -23,7 +23,7 @@ COPY code-server.extensions /etc/code-server.extensions
 # Setup base system
 ARG BUILD_ARCH=amd64
 ARG CODE_SERVER_VERSION="v4.93.1"
-ARG HA_CLI_VERSION="4.35.0"
+ARG HA_CLI_VERSION="4.36.0"
 ARG RCLONE_VERSION="v1.68.1"
 ARG CTOP_VERSION="v0.7.7"
 ARG CADDY_VERSION="v2.8.4"
