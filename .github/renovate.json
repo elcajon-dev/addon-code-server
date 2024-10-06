@@ -185,9 +185,9 @@
     },
     {
       "fileMatch": ["code-server/code-server.extensions$"],
-      "matchStrings": ["mikoz\\.black-py#(?<currentValue>.+)\\s"],
+      "matchStrings": ["charliermarsh\\.ruff#(?<currentValue>.+)\\s"],
       "datasourceTemplate": "github-tags",
-      "depNameTemplate": "34j/vscode-black"
+      "depNameTemplate": "astral-sh/ruff-vscode"
     },
     {
       "fileMatch": ["code-server/code-server.extensions$"],
