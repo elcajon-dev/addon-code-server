@@ -31,12 +31,12 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           declare -A LABELS_DICT
-          
+
           LATEST_TAG=$(gh release list --limit 1 --json tagName,isDraft --jq '.[] | select(.isDraft == true) | .tagName')
           echo "Latest tag: $LATEST_TAG"
-          
+
           PR_NUMBERS=$(gh release view "${LATEST_TAG}" | grep -oE '#[0-9]+' | tr -d '#' | sort -u)
-          
+
           for PR in $PR_NUMBERS; do
               LABELS=$(gh pr view "$PR" --json labels --jq '.labels[].name')
               while IFS= read -r LABEL; do
@@ -45,20 +45,20 @@ jobs:
                   fi
               done <<< "$LABELS"
           done
-          
+
           UNIQUE_LABELS=$(printf '%s\n' "${!LABELS_DICT[@]}" | jq -R . | jq -s .)
           echo "Unique Labels JSON:"
           echo "$UNIQUE_LABELS"
-          
+
           TARGET_LABELS=$(jq -n '["release", "critical"]')
           echo "Target Labels JSON:"
           echo "$TARGET_LABELS"
-          
+
           MATCH=$(jq -n --argjson unique "$UNIQUE_LABELS" --argjson target "$TARGET_LABELS" \
           '[ $unique[] | select( . == ($target[])) ] | length > 0')
           echo "Match Result:"
           echo "$MATCH"
-          
+
           echo "match_result=$MATCH" >> $GITHUB_OUTPUT
       - name: 🚀 Release
         if: steps.label_check.outputs.match_result == 'true'
