@@ -6,7 +6,6 @@ on:
   push:
     branches:
       - main
-  workflow_dispatch:
 
 jobs:
   update_release_draft:
@@ -24,48 +23,5 @@ jobs:
         uses: release-drafter/release-drafter@3f0f87098bd6b5c5b9a36d49c41d998ea58f9348 # v6.0.0
         with:
           version: ${{ steps.calver.outputs.next_version }}
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: Run Label Check Script
-        id: label_check
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          declare -A LABELS_DICT
-
-          LATEST_TAG=$(gh release list --limit 1 --json tagName,isDraft --jq '.[] | select(.isDraft == true) | .tagName')
-          echo "Latest tag: $LATEST_TAG"
-
-          PR_NUMBERS=$(gh release view "${LATEST_TAG}" | grep -oE '#[0-9]+' | tr -d '#' | sort -u)
-
-          for PR in $PR_NUMBERS; do
-              LABELS=$(gh pr view "$PR" --json labels --jq '.labels[].name')
-              while IFS= read -r LABEL; do
-                  if [ -n "$LABEL" ]; then
-                      LABELS_DICT["$LABEL"]=1
-                  fi
-              done <<< "$LABELS"
-          done
-
-          UNIQUE_LABELS=$(printf '%s\n' "${!LABELS_DICT[@]}" | jq -R . | jq -s .)
-          echo "Unique Labels JSON:"
-          echo "$UNIQUE_LABELS"
-
-          TARGET_LABELS=$(jq -n '["release", "critical"]')
-          echo "Target Labels JSON:"
-          echo "$TARGET_LABELS"
-
-          MATCH=$(jq -n --argjson unique "$UNIQUE_LABELS" --argjson target "$TARGET_LABELS" \
-          '[ $unique[] | select( . == ($target[])) ] | length > 0')
-          echo "Match Result:"
-          echo "$MATCH"
-
-          echo "match_result=$MATCH" >> $GITHUB_OUTPUT
-      - name: 🚀 Release
-        if: steps.label_check.outputs.match_result == 'true'
-        uses: release-drafter/release-drafter@3f0f87098bd6b5c5b9a36d49c41d998ea58f9348 # v6.0.0
-        with:
-          version: ${{ steps.calver.outputs.next_version }}
-          publish: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
