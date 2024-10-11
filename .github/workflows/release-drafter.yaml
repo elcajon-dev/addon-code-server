@@ -25,4 +25,3 @@ jobs:
           version: ${{ steps.calver.outputs.next_version }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  
