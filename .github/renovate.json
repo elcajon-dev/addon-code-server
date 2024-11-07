@@ -1,17 +1,15 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": [
-    "workarounds:reduceRepologyServerLoad",
-    "helpers:pinGitHubActionDigestsToSemver"
-  ],
+  "extends": ["helpers:pinGitHubActionDigestsToSemver"],
   "rebaseWhen": "behind-base-branch",
   "dependencyDashboard": true,
   "dependencyDashboardAutoclose": false,
   "labels": ["dependencies", "no-stale"],
   "commitMessagePrefix": "⬆️",
   "commitMessageTopic": "{{depName}}",
-  "regexManagers": [
+  "customManagers": [
     {
+      "customType": "regex",
       "fileMatch": ["/Dockerfile$", "/build.yaml$"],
       "matchStringsStrategy": "any",
       "matchStrings": [
@@ -21,6 +19,7 @@
       "datasourceTemplate": "docker"
     },
     {
+      "customType": "regex",
       "fileMatch": ["/Dockerfile$"],
       "matchStringsStrategy": "any",
       "matchStrings": [
@@ -31,6 +30,7 @@
       "depNameTemplate": "debian_12/{{package}}"
     },
     {
+      "customType": "regex",
       "fileMatch": ["/Dockerfile$"],
       "matchStrings": [
         "#\\s*renovate:\\s*datasource=(?<datasource>.*?) depName=(?<depName>.*?)( versioning=(?<versioning>.*?))?\\sARG .*?_version=\"(?<currentValue>.*)\"\\s"
@@ -38,6 +38,7 @@
       "versioningTemplate": "{{#if versioning}}{{{versioning}}}{{else}}semver{{/if}}"
     },
     {
+      "customType": "regex",
       "fileMatch": ["/Dockerfile$"],
       "matchStrings": [
         "ARG CODE_SERVER_VERSION=[\"']?(?<currentValue>.+?)[\"']?\\s+"
@@ -46,6 +47,7 @@
       "depNameTemplate": "cdr/code-server"
     },
     {
+      "customType": "regex",
       "fileMatch": ["/Dockerfile$"],
       "matchStrings": [
         "ARG HA_CLI_VERSION=[\"']?(?<currentValue>.+?)[\"']?\\s+"
@@ -55,6 +57,7 @@
       "versioningTemplate": "loose"
     },
     {
+      "customType": "regex",
       "fileMatch": ["/Dockerfile$"],
       "matchStrings": [
         "ARG RCLONE_VERSION=[\"']?(?<currentValue>.+?)[\"']?\\s+"
@@ -64,6 +67,7 @@
       "versioningTemplate": "loose"
     },
     {
+      "customType": "regex",
       "fileMatch": ["/Dockerfile$"],
       "matchStrings": ["ARG CTOP_VERSION=[\"']?(?<currentValue>.+?)[\"']?\\s+"],
       "datasourceTemplate": "github-releases",
@@ -71,6 +75,7 @@
       "versioningTemplate": "loose"
     },
     {
+      "customType": "regex",
       "fileMatch": ["/Dockerfile$"],
       "matchStrings": [
         "ARG CADDY_VERSION=[\"']?(?<currentValue>.+?)[\"']?\\s+"
@@ -80,6 +85,7 @@
       "versioningTemplate": "loose"
     },
     {
+      "customType": "regex",
       "fileMatch": ["/Dockerfile$"],
       "matchStrings": [
         "ARG TAILSCALE_VERSION=[\"']?(?<currentValue>.+?)[\"']?\\s+"
@@ -89,6 +95,7 @@
       "versioningTemplate": "loose"
     },
     {
+      "customType": "regex",
       "fileMatch": ["/Dockerfile$"],
       "matchStrings": [
         "ARG CLOUFLARED_VERSION=[\"']?(?<currentValue>.+?)[\"']?\\s+"
@@ -98,6 +105,7 @@
       "versioningTemplate": "loose"
     },
     {
+      "customType": "regex",
       "fileMatch": ["/Dockerfile$"],
       "matchStrings": ["ARG YQ_VERSION=[\"']?(?<currentValue>.+?)[\"']?\\s+"],
       "datasourceTemplate": "github-releases",
@@ -105,18 +113,21 @@
       "versioningTemplate": "loose"
     },
     {
+      "customType": "regex",
       "fileMatch": ["code-server/code-server.extensions$"],
       "matchStrings": ["emilast\\.LogFileHighlighter#(?<currentValue>.+)\\s"],
       "datasourceTemplate": "github-releases",
       "depNameTemplate": "emilast/vscode-logfile-highlighter"
     },
     {
+      "customType": "regex",
       "fileMatch": ["code-server/code-server.extensions$"],
       "matchStrings": ["esbenp\\.prettier-vscode#(?<currentValue>.+)\\s"],
       "datasourceTemplate": "github-releases",
       "depNameTemplate": "prettier/prettier-vscode"
     },
     {
+      "customType": "regex",
       "fileMatch": ["code-server/code-server.extensions$"],
       "matchStrings": ["ESPHome\\.esphome-vscode#(?<currentValue>.+)\\s"],
       "datasourceTemplate": "github-releases",
@@ -124,6 +135,7 @@
       "versioningTemplate": "loose"
     },
     {
+      "customType": "regex",
       "fileMatch": ["code-server/code-server.extensions$"],
       "matchStrings": [
         "keesschollaart\\.vscode-home-assistant#(?<currentValue>.+)\\s"
@@ -132,6 +144,7 @@
       "depNameTemplate": "keesschollaart81/vscode-home-assistant"
     },
     {
+      "customType": "regex",
       "fileMatch": ["code-server/code-server.extensions$"],
       "matchStrings": [
         "lukas-tr\\.materialdesignicons-intellisense#(?<currentValue>.+)\\s"
@@ -140,42 +153,49 @@
       "depNameTemplate": "lukas-tr/vscode-materialdesignicons-intellisense"
     },
     {
+      "customType": "regex",
       "fileMatch": ["code-server/code-server.extensions$"],
       "matchStrings": ["netcorext\\.uuid-generator#(?<currentValue>.+)\\s"],
       "datasourceTemplate": "github-releases",
       "depNameTemplate": "arenchen/vscode-uuid-generator"
     },
     {
+      "customType": "regex",
       "fileMatch": ["code-server/code-server.extensions$"],
       "matchStrings": ["usernamehw\\.errorlens#(?<currentValue>.+)\\s"],
       "datasourceTemplate": "github-releases",
       "depNameTemplate": "usernamehw/vscode-error-lens"
     },
     {
+      "customType": "regex",
       "fileMatch": ["code-server/code-server.extensions$"],
       "matchStrings": ["redhat\\.vscode-yaml#(?<currentValue>.+)\\s"],
       "datasourceTemplate": "github-releases",
       "depNameTemplate": "redhat-developer/vscode-yaml"
     },
     {
+      "customType": "regex",
       "fileMatch": ["code-server/code-server.extensions$"],
       "matchStrings": ["ms-azuretools\\.vscode-docker#(?<currentValue>.+)\\s"],
       "datasourceTemplate": "github-releases",
       "depNameTemplate": "microsoft/vscode-docker"
     },
     {
+      "customType": "regex",
       "fileMatch": ["code-server/code-server.extensions$"],
       "matchStrings": ["pkief\\.material-icon-theme#(?<currentValue>.+)\\s"],
       "datasourceTemplate": "github-releases",
       "depNameTemplate": "pkief/vscode-material-icon-theme"
     },
     {
+      "customType": "regex",
       "fileMatch": ["code-server/code-server.extensions$"],
       "matchStrings": ["github\\.github-vscode-theme#(?<currentValue>.+)\\s"],
       "datasourceTemplate": "github-releases",
       "depNameTemplate": "primer/github-vscode-theme"
     },
     {
+      "customType": "regex",
       "fileMatch": ["code-server/code-server.extensions$"],
       "matchStrings": [
         "DavidAnson\\.vscode-markdownlint#(?<currentValue>.+)\\s"
@@ -184,12 +204,14 @@
       "depNameTemplate": "DavidAnson/vscode-markdownlint"
     },
     {
+      "customType": "regex",
       "fileMatch": ["code-server/code-server.extensions$"],
       "matchStrings": ["charliermarsh\\.ruff#(?<currentValue>.+)\\s"],
       "datasourceTemplate": "github-tags",
       "depNameTemplate": "astral-sh/ruff-vscode"
     },
     {
+      "customType": "regex",
       "fileMatch": ["code-server/code-server.extensions$"],
       "matchStrings": [
         "GitHub\\.vscode-pull-request-github#(?<currentValue>.+)\\s"
@@ -198,12 +220,14 @@
       "depNameTemplate": "microsoft/vscode-pull-request-github"
     },
     {
+      "customType": "regex",
       "fileMatch": ["code-server/code-server.extensions$"],
       "matchStrings": ["ms-python\\.python#(?:v)?(?<currentValue>.+?)\\s"],
       "datasourceTemplate": "github-tags",
       "depNameTemplate": "microsoft/vscode-python"
     },
     {
+      "customType": "regex",
       "fileMatch": ["code-server/code-server.extensions$"],
       "matchStrings": ["ms-python\\.debugpy#(?:v)?(?<currentValue>.+?)\\s"],
       "datasourceTemplate": "github-tags",
@@ -232,7 +256,7 @@
     },
     {
       "matchDatasources": ["github-releases"],
-      "matchPaths": ["**/code-server/code-server.extensions"],
+      "matchFileNames": ["**/code-server/code-server.extensions"],
       "extractVersion": "^v(?<version>.*)$"
     },
     {
@@ -242,7 +266,7 @@
     },
     {
       "matchDatasources": ["github-tags"],
-      "matchPaths": ["**/code-server/code-server.extensions"],
+      "matchFileNames": ["**/code-server/code-server.extensions"],
       "extractVersion": "^v(?<version>.*)$"
     },
     {
