@@ -57,7 +57,7 @@ RUN \
         build-essential="${build_essential_version}" \
         colordiff=1.0.20-1 \
         git=1:2.39.5-0+deb12u1 \
-        iputils-ping=3:20221126-1 \
+        iputils-ping=3:20221126-1+deb12u1 \
         locales="${locales_version}" \
         mariadb-client=1:10.11.6-0+deb12u1 \
         mosquitto-clients=2.0.11-1.2+deb12u1 \
