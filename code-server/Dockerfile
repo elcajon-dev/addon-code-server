@@ -53,18 +53,18 @@ RUN \
     \
     && apt-get install -y --no-install-recommends \
         ack=3.6.0-1 \
-        libarchive-tools=3.6.2-1+deb12u1 \
+        libarchive-tools=3.6.2-1+deb12u2 \
         build-essential="${build_essential_version}" \
         colordiff=1.0.20-1 \
         git=1:2.39.5-0+deb12u1 \
-        iputils-ping=3:20221126-1 \
+        iputils-ping=3:20221126-1+deb12u1 \
         locales="${locales_version}" \
         mariadb-client=1:10.11.6-0+deb12u1 \
         mosquitto-clients=2.0.11-1.2+deb12u1 \
         net-tools=2.10-0.1 \
         nmap=7.93+dfsg1-1 \
         openssh-client="${openssh_client_version}" \
-        openssl=3.0.14-1~deb12u2 \
+        openssl=3.0.15-1~deb12u1 \
         python3-dev=3.11.2-1+b1 \
         python3=3.11.2-1+b1 \
         unzip=6.0-28 \
