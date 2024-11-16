@@ -29,7 +29,7 @@ ARG CTOP_VERSION="v0.7.7"
 ARG CADDY_VERSION="v2.8.4"
 ARG TAILSCALE_VERSION="v1.76.6"
 ARG CLOUFLARED_VERSION="2024.11.0"
-ARG YQ_VERSION="v4.44.3"
+ARG YQ_VERSION="v4.44.5"
 # renovate: datasource=repology depName=debian_12/build-essential-mipsen versioning=loose
 ARG build_essential_version="12.9"
 # renovate: datasource=repology depName=debian_12/locales versioning=loose
