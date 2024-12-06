@@ -2,7 +2,7 @@
   "files.associations": {
     "*.dash": "yaml",
     "**/esphome/*.yaml": "esphome",
-    "**/config/*.yaml": "home-assistant"
+    "**/homeassistant/*.yaml": "home-assistant"
   },
   "files.watcherExclude": {
     ".nfs**": true,
@@ -74,7 +74,8 @@
     "!include_dir_merge_named scalar",
     "!include_dir_named scalar",
     "!include scalar",
-    "!secret scalar"
+    "!secret scalar",
+    "!input scalar"
   ],
   "[yaml]": {
     "editor.autoIndent": "full",
@@ -84,7 +85,8 @@
       "other": true,
       "comments": false,
       "strings": true
-    }
+    },
+    "diffEditor.ignoreTrimWhitespace": false
   },
   "[home-assistant]": {
     "editor.autoIndent": "full",
@@ -129,7 +131,10 @@
     "*.log.fault": "log"
   },
   "git.branchProtection": ["main"],
-  "git.scanRepositories": ["homeassistant", "addon_configs"],
+  "git.scanRepositories": [
+    "homeassistant",
+    "addon_configs/3d90e82e_code-server"
+  ],
   "git.autoStash": true,
   "git.mergeEditor": true,
   "github.copilot.enable": {
@@ -137,5 +142,8 @@
     "plaintext": true,
     "markdown": false,
     "scminput": false
-  }
+  },
+  "githubPullRequests.fileListLayout": "tree",
+  "githubPullRequests.pullBranch": "never",
+  "diffEditor.hideUnchangedRegions.enabled": true
 }
