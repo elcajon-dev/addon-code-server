@@ -1,5 +1,8 @@
 ---
 name: Deploy
+permissions:
+  contents: read
+  packages: write
 
 # yamllint disable-line rule:truthy
 on:
