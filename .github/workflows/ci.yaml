@@ -142,6 +142,8 @@ jobs:
       - lint-shellcheck
       - lint-yamllint
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     strategy:
       matrix:
         architecture: ${{ fromJson(needs.information.outputs.architectures) }}
