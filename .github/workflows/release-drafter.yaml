@@ -19,6 +19,8 @@ jobs:
       - name: CalVer
         id: calver
         uses: energostack/calver-action@b78cb8c8cb798e4b64397d6837add121bd94f4d9 # v1.0.4
+        with:
+          date_format: "%Y.%-m"
       - name: 🚀 Run Release Drafter
         uses: release-drafter/release-drafter@b1476f6e6eb133afa41ed8589daba6dc69b4d3f5 # v6.1.0
         with:
