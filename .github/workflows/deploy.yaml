@@ -186,6 +186,9 @@ jobs:
     environment:
       name: ${{ needs.information.outputs.environment }}
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      actions: write
     steps:
       - name: 🔐 Load 1Password secrets
         uses: 1password/load-secrets-action@581a835fb51b8e7ec56b71cf2ffddd7e68bb25e0 # v2.0.0
