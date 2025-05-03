@@ -1,6 +1,9 @@
 ---
 name: Release Drafter
 
+permissions:
+  contents: write
+
 # yamllint disable-line rule:truthy
 on:
   push:
