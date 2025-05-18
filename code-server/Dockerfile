@@ -69,7 +69,7 @@ RUN \
         uuid-runtime="${uuid_runtime_version}" \
         wget=1.21.3-1+deb12u1 \
         zip=3.0-13 \
-        zsh=5.9-4+b5 \
+        zsh=5.9-4+b6 \
         less=590-2.1~deb12u2 \
         nano=7.2-1+deb12u1 \
         apt-transport-https=2.6.1 \
