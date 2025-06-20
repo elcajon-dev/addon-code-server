@@ -155,13 +155,6 @@
     {
       "customType": "regex",
       "fileMatch": ["code-server/code-server.extensions$"],
-      "matchStrings": ["netcorext\\.uuid-generator#(?<currentValue>.+)\\s"],
-      "datasourceTemplate": "github-releases",
-      "depNameTemplate": "arenchen/vscode-uuid-generator"
-    },
-    {
-      "customType": "regex",
-      "fileMatch": ["code-server/code-server.extensions$"],
       "matchStrings": ["usernamehw\\.errorlens#(?<currentValue>.+)\\s"],
       "datasourceTemplate": "github-releases",
       "depNameTemplate": "usernamehw/vscode-error-lens"
