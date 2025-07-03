@@ -1,4 +1,4 @@
-esphome==2025.6.2
+esphome==2025.6.3
 yamllint==1.37.1
 appdaemon==4.5.11
 hass-apps==0.20200319.0
