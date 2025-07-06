@@ -16,39 +16,39 @@ options+=(--disable-update-check)
 
 # Set log level if exists 
 if bashio::config.exists log_level; then
-  log_level=$(bashio::string.lower "$(bashio::config log_level)")
-  case "${log_level}" in
-    all)
-        log_level="trace"
-        ;;
-    trace)
-        log_level="trace"
-        ;;
-    debug)
-        log_level="debug"
-        ;;
-    info)
-        log_level="info"
-        ;;
-    notice)
-        log_level="info"
-        ;;
-    warning)
-        log_level="warn"
-        ;;
-    error)
-        log_level="error"
-        ;;
-    fatal)
-        log_level="error"
-        ;;
-    off)
-        log_level="error"
-        ;;
-    *)
-        bashio::exit.nok "Unknown log_level: ${log_level}"
-  esac
-  options+=(--log $log_level)
+    log_level=$(bashio::string.lower "$(bashio::config log_level)")
+    case "${log_level}" in
+        all)
+            log_level="trace"
+            ;;
+        trace)
+            log_level="trace"
+            ;;
+        debug)
+            log_level="debug"
+            ;;
+        info)
+            log_level="info"
+            ;;
+        notice)
+            log_level="info"
+            ;;
+        warning)
+            log_level="warn"
+            ;;
+        error)
+            log_level="error"
+            ;;
+        fatal)
+            log_level="error"
+            ;;
+        off)
+            log_level="error"
+            ;;
+        *)
+            bashio::exit.nok "Unknown log_level: ${log_level}"
+    esac
+    options+=(--log $log_level)
 fi
 
 

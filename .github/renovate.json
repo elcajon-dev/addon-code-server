@@ -60,48 +60,10 @@
       "customType": "regex",
       "fileMatch": ["/Dockerfile$"],
       "matchStrings": [
-        "ARG RCLONE_VERSION=[\"']?(?<currentValue>.+?)[\"']?\\s+"
-      ],
-      "datasourceTemplate": "github-releases",
-      "depNameTemplate": "rclone/rclone",
-      "versioningTemplate": "loose"
-    },
-    {
-      "customType": "regex",
-      "fileMatch": ["/Dockerfile$"],
-      "matchStrings": ["ARG CTOP_VERSION=[\"']?(?<currentValue>.+?)[\"']?\\s+"],
-      "datasourceTemplate": "github-releases",
-      "depNameTemplate": "bcicen/ctop",
-      "versioningTemplate": "loose"
-    },
-    {
-      "customType": "regex",
-      "fileMatch": ["/Dockerfile$"],
-      "matchStrings": [
-        "ARG CADDY_VERSION=[\"']?(?<currentValue>.+?)[\"']?\\s+"
-      ],
-      "datasourceTemplate": "github-releases",
-      "depNameTemplate": "caddyserver/caddy",
-      "versioningTemplate": "loose"
-    },
-    {
-      "customType": "regex",
-      "fileMatch": ["/Dockerfile$"],
-      "matchStrings": [
         "ARG TAILSCALE_VERSION=[\"']?(?<currentValue>.+?)[\"']?\\s+"
       ],
       "datasourceTemplate": "github-releases",
       "depNameTemplate": "tailscale/tailscale",
-      "versioningTemplate": "loose"
-    },
-    {
-      "customType": "regex",
-      "fileMatch": ["/Dockerfile$"],
-      "matchStrings": [
-        "ARG CLOUFLARED_VERSION=[\"']?(?<currentValue>.+?)[\"']?\\s+"
-      ],
-      "datasourceTemplate": "github-releases",
-      "depNameTemplate": "cloudflare/cloudflared",
       "versioningTemplate": "loose"
     },
     {

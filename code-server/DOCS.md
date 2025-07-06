@@ -24,8 +24,6 @@ using [this GitHub repository][ha-addons] or by clicking the button below.
 - Material Design icons pre-installed
 - Cron installed and configured
 - Tailscale installed
-- Cloudflared installed
-- Rclone installed
 - Appdaemon & hass-apps installed
 - Custom cont-init.d and services.d scripts (see chapter below)
 
