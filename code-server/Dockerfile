@@ -24,11 +24,7 @@ COPY code-server.extensions /etc/code-server.extensions
 ARG BUILD_ARCH=amd64
 ARG CODE_SERVER_VERSION="v4.101.2"
 ARG HA_CLI_VERSION="4.39.0"
-ARG RCLONE_VERSION="v1.70.2"
-ARG CTOP_VERSION="v0.7.7"
-ARG CADDY_VERSION="v2.10.0"
 ARG TAILSCALE_VERSION="v1.84.0"
-ARG CLOUFLARED_VERSION="2025.7.0"
 ARG YQ_VERSION="v4.45.4"
 # renovate: datasource=repology depName=debian_12/build-essential-mipsen versioning=loose
 ARG build_essential_version="12.9"
@@ -67,7 +63,7 @@ RUN \
         python3=3.11.2-1+b1 \
         unzip=6.0-28 \
         uuid-runtime="${uuid_runtime_version}" \
-        wget=1.21.3-1+deb12u1 \
+        wget>=1.21.3-1+b2 \
         zip=3.0-13 \
         zsh=5.9-4+b6 \
         less=590-2.1~deb12u2 \
@@ -91,8 +87,7 @@ RUN \
     \
     && if [[ "${BUILD_ARCH}" = "aarch64" ]]; then ARCH="arm64"; fi \
     && if [[ "${BUILD_ARCH}" = "amd64" ]]; then ARCH="amd64"; fi \
-    && echo "Installing Code-Server version ${CODE_SERVER_VERSION#v}" \
-    && curl -J -L -s -o /tmp/code.tar.gz \
+    && curl -J -L -o /tmp/code.tar.gz \
         "https://github.com/coder/code-server/releases/download/${CODE_SERVER_VERSION}/code-server-${CODE_SERVER_VERSION#v}-linux-${ARCH}.tar.gz" \
     && mkdir -p /usr/local/lib/code-server \
     && tar zxvf \
@@ -145,25 +140,11 @@ RUN \
     \
     && pip3 install --no-cache-dir -r /tmp/requirements.txt \
     \
-    && curl -J -L -s -o /usr/local/bin/ctop "https://github.com/bcicen/ctop/releases/download/v${CTOP_VERSION#v}/ctop-${CTOP_VERSION#v}-linux-${ARCH}"  \
-    &&  chmod +x /usr/local/bin/ctop \
-    \
-    && curl -J -L -s -o /tmp/rclone.deb "https://github.com/rclone/rclone/releases/download/${RCLONE_VERSION}/rclone-${RCLONE_VERSION}-linux-${ARCH}.deb" \
-    && dpkg -i /tmp/rclone.deb &> /dev/null \
-    \
-    && curl -L -s  \
-        "https://github.com/caddyserver/caddy/releases/download/${CADDY_VERSION}/caddy_${CADDY_VERSION#v}_linux_${ARCH}.tar.gz" \
-        | tar zxvf - -C /tmp/ \
-    && mv /tmp/caddy /usr/local/bin/ \
-    \
     && curl -L -s \
         "https://pkgs.tailscale.com/stable/tailscale_${TAILSCALE_VERSION#v}_${ARCH}.tgz" \
         | tar zxvf - -C /opt/ --strip-components 1 \
     && ln -s /opt/tailscale /usr/local/bin/ \
     && ln -s /opt/tailscaled /usr/local/bin/ \
-    \
-    && curl -J -L -s -o /usr/bin/cloudflared "https://github.com/cloudflare/cloudflared/releases/download/${CLOUFLARED_VERSION}/cloudflared-linux-${ARCH}" \
-    && chmod +x /usr/bin/cloudflared \
     \
     && curl -J -L -s -o /usr/bin/yq "https://github.com/mikefarah/yq/releases/download/${YQ_VERSION}/yq_linux_${ARCH}" \
     && chmod +x /usr/bin/yq \
@@ -186,16 +167,11 @@ RUN \
     && apt-get install -y --no-install-recommends \
         1password-cli \
     \
-    && copilot_chat_version=$(grep 'GitHub.copilot-chat#' /etc/code-server.extensions | awk -F '#' '{print $2}') \
-    && jq '.engines.vscode = "^1.90.0"' /usr/local/lib/code-server/lib/vscode/extensions/GitHub.copilot-chat-${copilot_chat_version}/package.json > /tmp/tmp.json \
-    && mv /tmp/tmp.json /usr/local/lib/code-server/lib/vscode/extensions/GitHub.copilot-chat-${copilot_chat_version}/package.json \
-    \
     && apt-get purge -y --auto-remove \
         build-essential \
         libarchive-tools \
         python3-dev \
         uuid-runtime \
-    \
     \
     && find /usr/local \
         \( -type d -a -name test -o -name tests -o -name '__pycache__' \) \
@@ -217,7 +193,7 @@ RUN \
 # Copy root filesystem
 COPY rootfs /
 
-# Healthcheck
+# Health check
 HEALTHCHECK \
     CMD curl --fail http://127.0.0.1:1337/healthz || exit 1
 
@@ -243,7 +219,7 @@ LABEL \
     org.opencontainers.image.vendor="Home Assistant Add-on" \
     org.opencontainers.image.authors="Elcajon" \
     org.opencontainers.image.licenses="MIT" \
-    org.opencontainers.image.url="https://github.com/elcajon-tech/repository-stable" \
+    org.opencontainers.image.url="https://github.com/elcajon-dev/repository-stable" \
     org.opencontainers.image.source="https://github.com/${BUILD_REPOSITORY}" \
     org.opencontainers.image.documentation="https://github.com/${BUILD_REPOSITORY}/blob/main/README.md" \
     org.opencontainers.image.created=${BUILD_DATE} \
