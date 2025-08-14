@@ -195,6 +195,8 @@ jobs:
     steps:
       - name: 🔐 Load 1Password secrets
         uses: 1password/load-secrets-action@13f58eec611f8e5db52ec16247f58c508398f3e6 # v3.0.0
+        with:
+          export-env: true
         env:
           OP_SERVICE_ACCOUNT_TOKEN: ${{ secrets.OP_SERVICE_ACCOUNT_TOKEN }}
           UPDATER_TOKEN: "op://CI/Github Token/Anmeldedaten"
