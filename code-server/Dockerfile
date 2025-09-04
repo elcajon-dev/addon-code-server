@@ -41,6 +41,12 @@ ARG openssh_client_version="1:10.0p1-7"
 # no-renovate: datasource=repology depName=debian_13/docker-ce-cli versioning=loose
 ARG docker_ce_cli_version="5:28.4.0-1~debian.13~trixie"
 
+# Add Debian 12 repository for Python compatibility with appdaemon
+RUN echo "deb http://deb.debian.org/debian bookworm main" > /etc/apt/sources.list.d/bookworm.list \
+    && echo "Package: python3* libpython3*" > /etc/apt/preferences.d/python \
+    && echo "Pin: release n=bookworm" >> /etc/apt/preferences.d/python \
+    && echo "Pin-Priority: 1001" >> /etc/apt/preferences.d/python
+
 # hadolint ignore=SC2181, DL3008
 RUN \
     apt-get update \
@@ -60,9 +66,9 @@ RUN \
         nmap=7.95+dfsg-3 \
         openssh-client="${openssh_client_version}" \
         openssl=3.5.1-1 \
-        python3-dev=3.13.5-1 \
+        python3-dev=3.11.2-1+b1 \
         python3-pip \
-        python3=3.13.5-1 \
+        python3=3.11.2-1+b1 \
         unzip=6.0-29 \
         uuid-runtime="${uuid_runtime_version}" \
         wget>=1.25.0-2 \
@@ -154,7 +160,8 @@ RUN \
     && update-alternatives \
         --install /usr/bin/python python /usr/bin/python3 10 \
     \
-    && pip3 install --no-cache-dir -r /tmp/requirements.txt \
+    && (pip3 install --no-cache-dir -r /tmp/requirements.txt || \
+        pip3 install --no-cache-dir -r /tmp/requirements.txt --trusted-host pypi.org --trusted-host files.pythonhosted.org) \
     \
     && (wget -q -O- \
         "https://pkgs.tailscale.com/stable/tailscale_${TAILSCALE_VERSION#v}_${ARCH}.tgz" || \
