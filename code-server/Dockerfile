@@ -26,59 +26,59 @@ ARG CODE_SERVER_VERSION="v4.103.2"
 ARG HA_CLI_VERSION="4.40.1"
 ARG TAILSCALE_VERSION="v1.86.2"
 ARG YQ_VERSION="v4.47.1"
-# renovate: datasource=repology depName=debian_12/build-essential-mipsen versioning=loose
-ARG build_essential_version="12.9"
-# renovate: datasource=repology depName=debian_12/locales versioning=loose
-ARG locales_version="2.36-9+deb12u7"
-# no-renovate: datasource=repology depName=debian_12/uuid-runtime versioning=loose
-ARG uuid_runtime_version="2.38.1-5+deb12u1"
-# renovate: datasource=repology depName=debian_12/gnupg versioning=loose
-ARG gnupg_version="2.2.40-1.1"
-# renovate: datasource=repology depName=debian_12/openssh versioning=loose
-ARG openssh_server_version="1:9.2p1-2+deb12u7"
-# renovate: datasource=repology depName=debian_12/openssh versioning=loose
-ARG openssh_client_version="1:9.2p1-2+deb12u7"
-# no-renovate: datasource=repology depName=debian_12/docker-ce-cli versioning=loose
-ARG docker_ce_cli_version="5:24.0.2-1~debian.12~bookworm"
+# renovate: datasource=repology depName=debian_13/build-essential-mipsen versioning=loose
+ARG build_essential_version="12.12"
+# renovate: datasource=repology depName=debian_13/locales versioning=loose
+ARG locales_version="2.41-12"
+# no-renovate: datasource=repology depName=debian_13/uuid-runtime versioning=loose
+ARG uuid_runtime_version="2.41-5"
+# renovate: datasource=repology depName=debian_13/gnupg versioning=loose
+ARG gnupg_version="2.4.7-21"
+# renovate: datasource=repology depName=debian_13/openssh versioning=loose
+ARG openssh_server_version="1:10.0p1-7"
+# renovate: datasource=repology depName=debian_13/openssh versioning=loose
+ARG openssh_client_version="1:10.0p1-7"
+# no-renovate: datasource=repology depName=debian_13/docker-ce-cli versioning=loose
+ARG docker_ce_cli_version="5:28.4.0-1~debian.13~trixie"
 
 # hadolint ignore=SC2181, DL3008
 RUN \
     apt-get update \
     \
     && apt-get install -y --no-install-recommends \
-        ack=3.6.0-1 \
-        libarchive-tools=3.6.2-1+deb12u2 \
+        ack=3.8.1-1 \
+        libarchive-tools=3.7.4-4 \
         build-essential="${build_essential_version}" \
-        colordiff=1.0.20-1 \
-        git=1:2.39.5-0+deb12u2 \
-        iputils-ping=3:20221126-1+deb12u1 \
+        colordiff=1.0.21-1 \
+        git=1:2.47.2-0.2 \
+        iputils-ping=3:20240905-3 \
         locales="${locales_version}" \
-        mariadb-client=1:10.11.11-0+deb12u1 \
-        mosquitto-clients=2.0.11-1.2+deb12u1 \
-        net-tools=2.10-0.1+deb12u2 \
-        nmap=7.93+dfsg1-1 \
+        mariadb-client=1:11.8.2-1 \
+        mosquitto-clients=2.0.21-1 \
+        net-tools=2.10-1.3 \
+        nmap=7.95+dfsg-3 \
         openssh-client="${openssh_client_version}" \
-        openssl=3.0.17-1~deb12u2 \
-        python3-dev=3.11.2-1+b1 \
-        python3=3.11.2-1+b1 \
-        unzip=6.0-28 \
+        openssl=3.5.1-1 \
+        python3-dev=3.13.5-1 \
+        python3=3.13.5-1 \
+        unzip=6.0-29 \
         uuid-runtime="${uuid_runtime_version}" \
-        wget>=1.21.3-1+b2 \
-        zip=3.0-13 \
-        zsh=5.9-4+b6 \
-        less=590-2.1~deb12u2 \
-        nano=7.2-1+deb12u1 \
-        apt-transport-https=2.6.1 \
+        wget>=1.25.0-2 \
+        zip=3.0-15 \
+        zsh=5.9-8+b14 \
+        less=668-1 \
+        nano=8.4-1 \
+        apt-transport-https=3.0.3 \
         gnupg="${gnupg_version}" \
-        cron=3.0pl1-162 \
-        lsb-release=12.0-1 \
+        cron=3.0pl1-197 \
+        lsb-release=12.1-1 \
         openssh-server="${openssh_server_version}" \
-        git-crypt=0.7.0-0.1 \
-        php=2:8.2+93 \
-        php-curl=2:8.2+93 \
-        netcat-openbsd=1.219-1 \
-        htop=3.2.2-2 \
-        shellcheck=0.9.0-1 \
+        git-crypt=0.7.0-0.1+b1 \
+        php=2:8.4+96 \
+        php-curl=2:8.4+96 \
+        netcat-openbsd=1.229-1 \
+        htop=3.4.1-5 \
+        shellcheck=0.10.0-1 \
     \
     && sed -i -e 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen \
     && locale-gen \
