@@ -39,7 +39,7 @@ ARG openssh_server_version="1:10.0p1-7"
 # renovate: datasource=repology depName=debian_13/openssh versioning=loose
 ARG openssh_client_version="1:10.0p1-7"
 # no-renovate: datasource=repology depName=debian_13/docker-ce-cli versioning=loose
-ARG docker_ce_cli_version="5:24.0.2-1~debian.12~bookworm"
+ARG docker_ce_cli_version="5:28.4.0-1~debian.13~trixie"
 
 # hadolint ignore=SC2181, DL3008
 RUN \
