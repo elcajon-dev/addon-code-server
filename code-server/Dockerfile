@@ -41,12 +41,6 @@ ARG openssh_client_version="1:10.0p1-7"
 # no-renovate: datasource=repology depName=debian_13/docker-ce-cli versioning=loose
 ARG docker_ce_cli_version="5:28.4.0-1~debian.13~trixie"
 
-# Add Debian 12 repository for Python compatibility with appdaemon
-RUN echo "deb http://deb.debian.org/debian bookworm main" > /etc/apt/sources.list.d/bookworm.list \
-    && echo "Package: python3* libpython3*" > /etc/apt/preferences.d/python \
-    && echo "Pin: release n=bookworm" >> /etc/apt/preferences.d/python \
-    && echo "Pin-Priority: 1001" >> /etc/apt/preferences.d/python
-
 # hadolint ignore=SC2181, DL3008
 RUN \
     apt-get update \
@@ -55,7 +49,6 @@ RUN \
         ack=3.8.1-1 \
         libarchive-tools=3.7.4-4 \
         build-essential="${build_essential_version}" \
-        ca-certificates \
         colordiff=1.0.21-1 \
         git=1:2.47.2-0.2 \
         iputils-ping=3:20240905-3 \
@@ -66,9 +59,8 @@ RUN \
         nmap=7.95+dfsg-3 \
         openssh-client="${openssh_client_version}" \
         openssl=3.5.1-1 \
-        python3-dev=3.11.2-1+b1 \
-        python3-pip \
-        python3=3.11.2-1+b1 \
+        python3-dev=3.13.5-1 \
+        python3=3.13.5-1 \
         unzip=6.0-29 \
         uuid-runtime="${uuid_runtime_version}" \
         wget>=1.25.0-2 \
@@ -91,12 +83,12 @@ RUN \
     && sed -i -e 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen \
     && locale-gen \
     \
+    && curl https://bootstrap.pypa.io/get-pip.py | python3 \
+    \
     && if [[ "${BUILD_ARCH}" = "aarch64" ]]; then ARCH="arm64"; fi \
     && if [[ "${BUILD_ARCH}" = "amd64" ]]; then ARCH="amd64"; fi \
-    && (wget -q -O /tmp/code.tar.gz \
-        "https://github.com/coder/code-server/releases/download/${CODE_SERVER_VERSION}/code-server-${CODE_SERVER_VERSION#v}-linux-${ARCH}.tar.gz" || \
-        wget --no-check-certificate -q -O /tmp/code.tar.gz \
-        "https://github.com/coder/code-server/releases/download/${CODE_SERVER_VERSION}/code-server-${CODE_SERVER_VERSION#v}-linux-${ARCH}.tar.gz") \
+    && curl -J -L -o /tmp/code.tar.gz \
+        "https://github.com/coder/code-server/releases/download/${CODE_SERVER_VERSION}/code-server-${CODE_SERVER_VERSION#v}-linux-${ARCH}.tar.gz" \
     && mkdir -p /usr/local/lib/code-server \
     && tar zxvf \
         /tmp/code.tar.gz \
@@ -115,14 +107,10 @@ RUN \
         echo "Installing Code Server extension: ${slug} by ${vendor} @ ${version} "; \
         \
         echo "https://marketplace.visualstudio.com/_apis/public/gallery/publishers/${vendor}/vsextensions/${slug}/${version}/vspackage"; \
-        curl -JL --retry 5 --connect-timeout 10 -o "/tmp/${extention}-${version}.vsix" \
+        curl -JL --retry 5 -o "/tmp/${extention}-${version}.vsix" \
             -H "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36" \
             -H "x-market-user-id: ${uuid}" \
-            "https://marketplace.visualstudio.com/_apis/public/gallery/publishers/${vendor}/vsextensions/${slug}/${version}/vspackage" || \
-        (wget -q -O "/tmp/${extention}-${version}.vsix" --header="User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36" \
-            "https://marketplace.visualstudio.com/_apis/public/gallery/publishers/${vendor}/vsextensions/${slug}/${version}/vspackage" || \
-        wget --no-check-certificate -q -O "/tmp/${extention}-${version}.vsix" --header="User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36" \
-            "https://marketplace.visualstudio.com/_apis/public/gallery/publishers/${vendor}/vsextensions/${slug}/${version}/vspackage"); \
+            "https://marketplace.visualstudio.com/_apis/public/gallery/publishers/${vendor}/vsextensions/${slug}/${version}/vspackage"; \
         mkdir -p "/usr/local/lib/code-server/lib/vscode/extensions/${extention}-${version}"; \
         bsdtar --strip-components=1 -xf "/tmp/${extention}-${version}.vsix" \
                     -C "/usr/local/lib/code-server/lib/vscode/extensions/${extention}-${version}" extension; \
@@ -131,27 +119,17 @@ RUN \
     done < /etc/code-server.extensions \
     && ls -la /usr/local/lib/code-server/lib/vscode/extensions/ \
     \
-    && (wget -q -O /usr/bin/ha \
-        "https://github.com/home-assistant/cli/releases/download/${HA_CLI_VERSION}/ha_${BUILD_ARCH}" || \
-        wget --no-check-certificate -q -O /usr/bin/ha \
-        "https://github.com/home-assistant/cli/releases/download/${HA_CLI_VERSION}/ha_${BUILD_ARCH}") \
+    && curl -L -s -o /usr/bin/ha \
+        "https://github.com/home-assistant/cli/releases/download/${HA_CLI_VERSION}/ha_${BUILD_ARCH}" \
     && chmod a+x /usr/bin/ha \
     \
     && git clone --branch master --single-branch --depth 1 \
-        "https://github.com/robbyrussell/oh-my-zsh.git" ~/.oh-my-zsh || \
-        git -c http.sslverify=false clone --branch master --single-branch --depth 1 \
         "https://github.com/robbyrussell/oh-my-zsh.git" ~/.oh-my-zsh \
     \
     && git clone --branch master --single-branch --depth 1 \
         "https://github.com/zsh-users/zsh-autosuggestions" \
-        ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions || \
-        git -c http.sslverify=false clone --branch master --single-branch --depth 1 \
-        "https://github.com/zsh-users/zsh-autosuggestions" \
         ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions \
     && git clone --branch master --single-branch --depth 1 \
-        "https://github.com/zsh-users/zsh-syntax-highlighting.git" \
-        ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting || \
-        git -c http.sslverify=false clone --branch master --single-branch --depth 1 \
         "https://github.com/zsh-users/zsh-syntax-highlighting.git" \
         ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting \
     \
@@ -160,24 +138,18 @@ RUN \
     && update-alternatives \
         --install /usr/bin/python python /usr/bin/python3 10 \
     \
-    && (pip3 install --no-cache-dir -r /tmp/requirements.txt || \
-        pip3 install --no-cache-dir -r /tmp/requirements.txt --trusted-host pypi.org --trusted-host files.pythonhosted.org) \
+    && pip3 install --no-cache-dir -r /tmp/requirements.txt \
     \
-    && (wget -q -O- \
-        "https://pkgs.tailscale.com/stable/tailscale_${TAILSCALE_VERSION#v}_${ARCH}.tgz" || \
-        wget --no-check-certificate -q -O- \
-        "https://pkgs.tailscale.com/stable/tailscale_${TAILSCALE_VERSION#v}_${ARCH}.tgz") \
+    && curl -L -s \
+        "https://pkgs.tailscale.com/stable/tailscale_${TAILSCALE_VERSION#v}_${ARCH}.tgz" \
         | tar zxvf - -C /opt/ --strip-components 1 \
     && ln -s /opt/tailscale /usr/local/bin/ \
     && ln -s /opt/tailscaled /usr/local/bin/ \
     \
-    && (wget -q -O /usr/bin/yq "https://github.com/mikefarah/yq/releases/download/${YQ_VERSION}/yq_linux_${ARCH}" || \
-        wget --no-check-certificate -q -O /usr/bin/yq "https://github.com/mikefarah/yq/releases/download/${YQ_VERSION}/yq_linux_${ARCH}") \
+    && curl -J -L -s -o /usr/bin/yq "https://github.com/mikefarah/yq/releases/download/${YQ_VERSION}/yq_linux_${ARCH}" \
     && chmod +x /usr/bin/yq \
     \
-    && (wget -q -O- https://download.docker.com/linux/ubuntu/gpg || \
-        wget --no-check-certificate -q -O- https://download.docker.com/linux/ubuntu/gpg) | \
-        gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg &> /dev/null \
+    && curl -fsSL https://download.docker.com/linux/ubuntu/gpg | gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg &> /dev/null \
     && echo \
     "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/debian \
     $(lsb_release -cs) stable" | tee /etc/apt/sources.list.d/docker.list \
@@ -187,8 +159,7 @@ RUN \
     \
     && mv /usr/bin/docker /usr/local/bin/.undocked \
     \
-    && (wget -q -O- https://downloads.1password.com/linux/keys/1password.asc || \
-        wget --no-check-certificate -q -O- https://downloads.1password.com/linux/keys/1password.asc) | \
+    && curl -sS https://downloads.1password.com/linux/keys/1password.asc | \
         gpg --dearmor --output /usr/share/keyrings/1password-archive-keyring.gpg \
     && echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/1password-archive-keyring.gpg] https://downloads.1password.com/linux/debian/$(dpkg --print-architecture) stable main" | \
         tee /etc/apt/sources.list.d/1password.list \

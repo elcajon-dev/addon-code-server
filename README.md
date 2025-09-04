@@ -48,7 +48,6 @@ with the following additional features:
 - Tailscale installed
 - Cloudflared installed
 - Rclone installed
-- Appdaemon & hass-apps installed
 - Custom cont-init.d and services.d scripts
 
 [aarch64-shield]: https://img.shields.io/badge/aarch64-no-red.svg
