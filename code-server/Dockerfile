@@ -25,7 +25,7 @@ ARG BUILD_ARCH=amd64
 ARG CODE_SERVER_VERSION="v4.103.2"
 ARG HA_CLI_VERSION="4.41.0"
 ARG TAILSCALE_VERSION="v1.86.2"
-ARG YQ_VERSION="v4.47.1"
+ARG YQ_VERSION="v4.47.2"
 # renovate: datasource=repology depName=debian_13/build-essential-mipsen versioning=loose
 ARG build_essential_version="12.12"
 # renovate: datasource=repology depName=debian_13/locales versioning=loose
