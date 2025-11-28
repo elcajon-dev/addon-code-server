@@ -118,17 +118,11 @@ jobs:
         with:
           ref: ${{ github.head_ref }}
           persist-credentials: false
-      - name: 🔐 Load 1Password secrets
-        id: token
-        uses: 1password/load-secrets-action@13f58eec611f8e5db52ec16247f58c508398f3e6 # v3.0.0
-        env:
-          OP_SERVICE_ACCOUNT_TOKEN: ${{ secrets.OP_SERVICE_ACCOUNT_TOKEN }}
-          UPDATER_TOKEN: "op://CI/Github Token/Anmeldedaten"
       - name: 🚀 Run Prettier
         uses: creyD/prettier_action@8c18391fdc98ed0d884c6345f03975edac71b8f0 # v4.6
         with:
           prettier_options: --write **/*.{json,js,md,yaml}
-          GITHUB_TOKEN: ${{ env.UPDATER_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.PAT_BRENNER_BOT }}
 
   build:
     name: Build ${{ matrix.architecture }}

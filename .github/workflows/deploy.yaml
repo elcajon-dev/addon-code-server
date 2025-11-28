@@ -160,17 +160,10 @@ jobs:
       name: ${{ needs.information.outputs.environment }}
     runs-on: ubuntu-latest
     steps:
-      - name: 🔐 Load 1Password secrets
-        uses: 1password/load-secrets-action@13f58eec611f8e5db52ec16247f58c508398f3e6 # v3.0.0
-        with:
-          export-env: true
-        env:
-          OP_SERVICE_ACCOUNT_TOKEN: ${{ secrets.OP_SERVICE_ACCOUNT_TOKEN }}
-          UPDATER_TOKEN: "op://CI/Github Token/Anmeldedaten"
       - name: 🚀 Dispatch repository updater update signal
         uses: peter-evans/repository-dispatch@28959ce8df70de7be546dd1250a005dd32156697 # v4.0.1
         with:
-          token: ${{ env.UPDATER_TOKEN }}
+          token: ${{ secrets.PAT_BRENNER_BOT }}
           repository: ${{ github.repository_owner }}/repository-edge
           event-type: update
           client-payload: >
@@ -193,18 +186,11 @@ jobs:
       contents: read
       actions: write
     steps:
-      - name: 🔐 Load 1Password secrets
-        uses: 1password/load-secrets-action@13f58eec611f8e5db52ec16247f58c508398f3e6 # v3.0.0
-        with:
-          export-env: true
-        env:
-          OP_SERVICE_ACCOUNT_TOKEN: ${{ secrets.OP_SERVICE_ACCOUNT_TOKEN }}
-          UPDATER_TOKEN: "op://CI/Github Token/Anmeldedaten"
       - name: 🚀 Dispatch repository updater update signal
         uses: peter-evans/repository-dispatch@28959ce8df70de7be546dd1250a005dd32156697 # v4.0.1
         with:
-          token: ${{ env.UPDATER_TOKEN }}
-          repository: ${{ github.repository_owner }}/repository-stable
+          token: ${{ secrets.PAT_BRENNER_BOT }}
+          repository: ${{ github.repository_owner }}/repository
           event-type: update
           client-payload: >
             {
