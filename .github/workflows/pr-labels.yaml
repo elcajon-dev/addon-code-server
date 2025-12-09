@@ -1,10 +1,6 @@
 ---
 name: PR Labels
 
-permissions:
-  contents: read
-  pull-requests: write
-
 # yamllint disable-line rule:truthy
 on:
   pull_request_target:
@@ -16,4 +12,4 @@ on:
 
 jobs:
   workflows:
-    uses: hassio-addons/workflows/.github/workflows/pr-labels.yaml@main
+    uses: homeassistant-apps/workflows/.github/workflows/pr-labels.yaml@main
