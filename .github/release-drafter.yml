@@ -31,5 +31,7 @@ categories:
       - "dependencies"
 
 template: |
-  ## What’s changed
   $CHANGES
+
+category-template: |
+  ### $TITLE
