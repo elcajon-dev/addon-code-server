@@ -1,9 +1,6 @@
 ---
 name: Release Drafter
 
-permissions:
-  contents: write
-
 # yamllint disable-line rule:truthy
 on:
   push:
@@ -11,22 +8,5 @@ on:
       - main
 
 jobs:
-  update_release_draft:
-    name: ✏️ Draft release
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@1af3b93b6815bc44a9784bd300feb67ff0d1eeb3 # v6.0.0
-        with:
-          fetch-depth: 0
-          fetch-tags: true
-      - name: CalVer
-        id: calver
-        uses: energostack/calver-action@b78cb8c8cb798e4b64397d6837add121bd94f4d9 # v1.0.4
-        with:
-          date_format: "%Y.%-m"
-      - name: 🚀 Run Release Drafter
-        uses: release-drafter/release-drafter@b1476f6e6eb133afa41ed8589daba6dc69b4d3f5 # v6.1.0
-        with:
-          version: ${{ steps.calver.outputs.next_version }}
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  workflows:
+    uses: homeassistant-apps/workflows/.github/workflows/release-drafter.yaml@main
