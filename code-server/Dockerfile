@@ -24,7 +24,7 @@ COPY code-server.extensions /etc/code-server.extensions
 ARG BUILD_ARCH=amd64
 ARG CODE_SERVER_VERSION="v4.106.3"
 ARG HA_CLI_VERSION="4.43.0"
-ARG TAILSCALE_VERSION="v1.90.9"
+ARG TAILSCALE_VERSION="v1.92.2"
 ARG YQ_VERSION="v4.49.2"
 # renovate: datasource=repology depName=debian_13/build-essential-mipsen versioning=loose
 ARG build_essential_version="12.12"
